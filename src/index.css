@@ -28,8 +28,9 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -54,7 +55,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 
@@ -62,7 +63,108 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Full-screen Terminal */
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  overflow-x: hidden;
+}
+
+/* Terminal scrollbar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thumb-green-500 {
+  scrollbar-color: #10b981 transparent;
+}
+
+.scrollbar-track-transparent {
+  scrollbar-color: #10b981 transparent;
+}
+
+.terminal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 4px;
+}
+
+.terminal-content::-webkit-scrollbar-thumb:hover {
+  background: #059669;
+}
+
+/* Clean terminal styles */
+
+/* Terminal scrollbar */
+.terminal-content {
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 transparent;
+}
+
+.terminal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 4px;
+}
+
+.terminal-content::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Input field styling */
+.terminal-content input {
+  font-family: 'Courier New', monospace;
+  caret-color: transparent;
+}
+
+.terminal-content input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Ensure proper cursor positioning */
+.terminal-content .relative {
+  display: inline-block;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .terminal-window {
+    margin: 0 10px;
+    width: calc(100% - 20px) !important;
+    max-width: 380px;
+  }
+
+  .terminal-window::before {
+    background:
+      repeating-linear-gradient(0deg,
+        transparent,
+        transparent 1px,
+        rgba(0, 255, 0, 0.03) 1px,
+        rgba(0, 255, 0, 0.03) 2px);
   }
 }

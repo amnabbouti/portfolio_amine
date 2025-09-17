@@ -1,8 +1,15 @@
+export interface ProjectListItem {
+  slug: string;
+  title: string;
+  summary: string;
+}
+
 export interface Command {
   command: string;
   output: string[] | string;
   isError?: boolean;
   showMenu?: boolean;
+  projectList?: ProjectListItem[];
 }
 
 export interface MenuOption {

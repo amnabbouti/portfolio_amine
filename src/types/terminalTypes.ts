@@ -21,6 +21,7 @@ export interface MenuState {
   selectedMenuIndex: number;
   showMenuPrompt: boolean;
   menuFilter: string;
+  activeCaseStudy: import('./terminal').CaseStudy | null;
 }
 
 // Menu state setters
@@ -29,6 +30,7 @@ export interface MenuStateSetters {
   setSelectedMenuIndex: React.Dispatch<React.SetStateAction<number>>;
   setShowMenuPrompt: React.Dispatch<React.SetStateAction<boolean>>;
   setMenuFilter: React.Dispatch<React.SetStateAction<string>>;
+  setActiveCaseStudy: React.Dispatch<React.SetStateAction<import('./terminal').CaseStudy | null>>;
 }
 
 // Animation state types

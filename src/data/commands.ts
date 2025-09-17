@@ -5,8 +5,7 @@ export const menuOptions: MenuOption[] = [
     // User information commands
     {command: 'whoami', description: 'Display user information'},
     {command: 'skills', description: 'Show technical skills'},
-    {command: 'projects', description: 'List my projects'},
-    {command: 'case-study', description: 'Read detailed project breakdowns'},
+    {command: 'projects', description: 'Browse featured projects'},
     {command: 'experience', description: 'Show work experience'},
     {command: 'contact', description: 'Get contact information'},
     {command: 'hire', description: 'Why you should hire me'},
@@ -66,17 +65,7 @@ export const commands: Record<string, { output: string[] | string }> = {
         ],
     },
     projects: {
-        output: [
-            'Recent Projects:',
-            '1. [E-Commerce Platform] - Full-stack React/Node.js',
-            '2. [Missions control] -  Full-stack React-Native/Laravel',
-            '3. [Portfolio Website] - The one you\'re using right now!',
-            '4. [Super Dashboard] - Next.js with Tailwind CSS/with real time api monitoring and user management',
-            '5. [space web] - Full-stack php/css/js',
-            '',
-            'Visit my GitHub for more: github.com/amine-abbouti',
-            '',
-        ],
+        output: 'SHOW_PROJECTS',
     },
     experience: {
         output: [

@@ -1,4 +1,4 @@
-import type {Command} from '@/types';
+import type {Command, ProjectListItem, CaseStudy} from '@/types';
 import type {CommandHandlers} from '@/types/terminalTypes';
 import {commands, menuOptions, caseStudies} from '@/data';
 
@@ -8,6 +8,12 @@ const availableCommands = Array.from(
     ...Object.keys(commands).map((key) => key.toLowerCase()),
   ]),
 );
+
+const projectSummaries: ProjectListItem[] = caseStudies.map((study) => ({
+  slug: study.slug,
+  title: study.title,
+  summary: study.summary,
+}));
 
 /**
  * Hook for handling terminal commands
@@ -26,6 +32,7 @@ export function useTerminalCommands(
   setShowCommandMenu: React.Dispatch<React.SetStateAction<boolean>>,
   setSelectedMenuIndex: React.Dispatch<React.SetStateAction<number>>,
   setMenuFilter: React.Dispatch<React.SetStateAction<string>>,
+  setActiveCaseStudy: React.Dispatch<React.SetStateAction<CaseStudy | null>>,
   setShowDownloadConfirmation: React.Dispatch<React.SetStateAction<boolean>>,
   setIsHackingSequence: React.Dispatch<React.SetStateAction<boolean>>,
   setHackingLines: React.Dispatch<React.SetStateAction<string[]>>,
@@ -50,6 +57,7 @@ export function useTerminalCommands(
         },
       ]);
       setShowDownloadConfirmation(true);
+      setActiveCaseStudy(null);
       return true;
     }
 
@@ -57,6 +65,7 @@ export function useTerminalCommands(
       setIsHackingSequence(true);
       setHackingLines([]);
       setCommandHistory([]);
+      setActiveCaseStudy(null);
       return true;
     }
 
@@ -72,6 +81,7 @@ export function useTerminalCommands(
       setShowCommandMenu(true);
       setSelectedMenuIndex(0);
       setMenuFilter('');
+      setActiveCaseStudy(null);
       setTimeout(scrollToBottom, 50);
       return true;
     }
@@ -182,6 +192,70 @@ export function useTerminalCommands(
       return true;
     }
 
+    if (baseCommand === 'projects') {
+      if (args.length === 0) {
+        setActiveCaseStudy(null);
+        setCommandHistory((prev) => [
+          ...prev,
+          {
+            command: cmd,
+            output: ['Projects directory', ''],
+            isError: false,
+            projectList: projectSummaries,
+          },
+        ]);
+
+        setTimeout(() => {
+          setShowMenuPrompt(true);
+        }, 100);
+        setTimeout(scrollToBottom, 100);
+        return true;
+      }
+
+      const slug = args.join(' ');
+      const match = caseStudies.find(
+        (study) => study.slug.toLowerCase() === slug.toLowerCase(),
+      );
+
+      if (!match) {
+        setCommandHistory((prev) => [
+          ...prev,
+          {
+            command: cmd,
+            output: [
+              `No project found for "${slug}".`,
+              'Available slugs:',
+              ...caseStudies.map((study) => `  - ${study.slug}`),
+              '',
+            ],
+            isError: true,
+          },
+        ]);
+
+        setTimeout(() => {
+          setShowMenuPrompt(true);
+        }, 100);
+        setTimeout(scrollToBottom, 100);
+        return true;
+      }
+
+      setActiveCaseStudy(match);
+      setCommandHistory((prev) => [
+        ...prev,
+        {
+          command: cmd,
+          output: [`Opening project detail for ${match.title}`, ''],
+          isError: false,
+        },
+      ]);
+
+      setTimeout(() => {
+        setShowMenuPrompt(true);
+      }, 100);
+      setTimeout(scrollToBottom, 100);
+      return true;
+    }
+
     return false;
   };
 
@@ -264,6 +338,7 @@ export function useTerminalCommands(
     setShowCommandMenu(false);
     setShowMenuPrompt(false);
     setMenuFilter('');
+    setActiveCaseStudy(null);
 
     if (clearMenuEntries) {
       setCommandHistory((prev) => prev.filter((cmd) => !cmd.showMenu));

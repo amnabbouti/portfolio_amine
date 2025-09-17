@@ -1,5 +1,6 @@
 import {useState, useRef} from 'react';
 import type {MenuState, MenuStateSetters, UIUtils} from '@/types/terminalTypes';
+import type {CaseStudy} from '@/types';
 
 /**
  * Hook for managing terminal UI state and utilities
@@ -13,6 +14,7 @@ export function useTerminalUI(): MenuState & MenuStateSetters & UIUtils & {
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
   const [showMenuPrompt, setShowMenuPrompt] = useState(false);
   const [menuFilter, setMenuFilter] = useState('');
+  const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudy | null>(null);
 
   // Refs
   const terminalContentRef = useRef<HTMLDivElement>(null);
@@ -64,11 +66,13 @@ export function useTerminalUI(): MenuState & MenuStateSetters & UIUtils & {
     selectedMenuIndex,
     showMenuPrompt,
     menuFilter,
+    activeCaseStudy,
     terminalContentRef,
     setShowCommandMenu,
     setSelectedMenuIndex,
     setShowMenuPrompt,
     setMenuFilter,
+    setActiveCaseStudy,
     scrollToBottom,
     getLineColor,
   };

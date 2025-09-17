@@ -1,7 +1,13 @@
 import { useEffect } from 'react';
 import { useTerminal } from '@/features/terminal/hooks';
 import { menuOptions } from '@/data';
-import { HackingSequence, TerminalOutput, TerminalInput, CommandMenu } from '.';
+import {
+  HackingSequence,
+  TerminalOutput,
+  TerminalInput,
+  CommandMenu,
+} from '.';
+import { ProjectDetailWindow } from './project/ProjectDetailWindow';
 
 /**
  * Terminal Component
@@ -22,6 +28,7 @@ export function Terminal() {
     selectedMenuIndex,
     showMenuPrompt,
     menuFilter,
+    activeCaseStudy,
     terminalContentRef,
     isDownloading,
     isHackingProgress,
@@ -31,6 +38,7 @@ export function Terminal() {
     setSelectedMenuIndex,
     setShowMenuPrompt,
     setMenuFilter,
+    setActiveCaseStudy,
     handleCommand,
     handleInputChange,
     handleEnterCommand,
@@ -71,6 +79,11 @@ export function Terminal() {
 
   const handleMenuSelect = (command: string) => {
     handleCommand(command, true);
+    handleInputChange('');
+  };
+
+  const handleProjectSelect = (slug: string) => {
+    handleCommand(`projects ${slug}`);
     handleInputChange('');
   };
 
@@ -143,6 +156,7 @@ export function Terminal() {
                 onDownloadComplete={handleDownloadComplete}
                 onDownloadConfirm={handleDownloadConfirm}
                 onDownloadCancel={handleDownloadCancel}
+                onProjectSelect={handleProjectSelect}
               />
               {!showDownloadConfirmation && !showShutdownSequence && (
                 <TerminalInput
@@ -177,6 +191,12 @@ export function Terminal() {
               onEscape={handleMenuEscape}
               onNavigate={handleMenuNavigate}
               options={visibleMenuOptions}
+            />
+          ) : null}
+          {activeCaseStudy ? (
+            <ProjectDetailWindow
+              study={activeCaseStudy}
+              onClose={() => setActiveCaseStudy(null)}
             />
           ) : null}
         </div>

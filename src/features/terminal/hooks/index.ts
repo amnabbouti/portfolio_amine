@@ -4,4 +4,3 @@ export { useTerminalAnimations } from './useTerminalAnimations';
 export { useTerminalCommands } from './useTerminalCommands';
 export { useTerminalState } from './useTerminalState';
 export { useTerminalUI } from './useTerminalUI';
-

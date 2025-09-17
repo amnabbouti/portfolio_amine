@@ -27,10 +27,7 @@ export function MatrixRain({ isActive, onComplete }: MatrixRainProps) {
     context.fillRect(0, 0, width, height);
 
     const columns = Math.floor(width / 20) + 1;
-    const yPositions: number[] = Array.from(
-      { length: columns },
-      () => Math.random() * height,
-    );
+    const yPositions: number[] = Array.from({ length: columns }, () => Math.random() * height);
 
     context.fillStyle = '#000';
     context.fillRect(0, 0, width, height);
@@ -64,7 +61,7 @@ export function MatrixRain({ isActive, onComplete }: MatrixRainProps) {
 
     animate();
     const countdownInterval = setInterval(() => {
-      setCountdown((prev) => {
+      setCountdown(prev => {
         if (prev <= 1) {
           clearInterval(countdownInterval);
           setTimeout(() => onComplete(), 0); // Use setTimeout to avoid updating during render
@@ -116,7 +113,7 @@ export function MatrixRain({ isActive, onComplete }: MatrixRainProps) {
             ENTERING THE MATRIX
           </div>
           <div className="text-green-300 font-mono text-2xl mb-8">
-            Reality is an illusion... {countdown > 0 ? `${countdown}...` : ""}
+            Reality is an illusion... {countdown > 0 ? `${countdown}...` : ''}
           </div>
         </div>
       </div>

@@ -1,14 +1,16 @@
-import {useState, useRef} from 'react';
-import type {MenuState, MenuStateSetters, UIUtils} from '@/types/terminalTypes';
-import type {CaseStudy} from '@/types';
+import { useState, useRef } from 'react';
+import type { MenuState, MenuStateSetters, UIUtils } from '@/types/terminalTypes';
+import type { CaseStudy } from '@/types';
 
 /**
  * Hook for managing terminal UI state and utilities
  * Handles menu state, scrolling, and line styling
  */
-export function useTerminalUI(): MenuState & MenuStateSetters & UIUtils & {
-  terminalContentRef: React.RefObject<HTMLDivElement | null>;
-} {
+export function useTerminalUI(): MenuState &
+  MenuStateSetters &
+  UIUtils & {
+    terminalContentRef: React.RefObject<HTMLDivElement | null>;
+  } {
   // Menu state
   const [showCommandMenu, setShowCommandMenu] = useState(false);
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
@@ -24,8 +26,7 @@ export function useTerminalUI(): MenuState & MenuStateSetters & UIUtils & {
    */
   const scrollToBottom = () => {
     if (terminalContentRef.current) {
-      terminalContentRef.current.scrollTop =
-        terminalContentRef.current.scrollHeight;
+      terminalContentRef.current.scrollTop = terminalContentRef.current.scrollHeight;
     }
   };
 
@@ -42,11 +43,7 @@ export function useTerminalUI(): MenuState & MenuStateSetters & UIUtils & {
     ) {
       return 'text-yellow-400';
     }
-    if (
-      line.startsWith('├──') ||
-      line.startsWith('└──') ||
-      line.startsWith('│')
-    ) {
+    if (line.startsWith('├──') || line.startsWith('└──') || line.startsWith('│')) {
       return 'text-blue-400';
     }
     if (

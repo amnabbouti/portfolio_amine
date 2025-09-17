@@ -21,12 +21,7 @@ interface CommandMenuProps {
  * @param props - The component props (see CommandMenuProps interface)
  * @returns A menu of available commands with selection highlighting
  */
-export function CommandMenu({
-  selectedIndex,
-  onSelect,
-  onNavigate,
-  options,
-}: CommandMenuProps) {
+export function CommandMenu({ selectedIndex, onSelect, onNavigate, options }: CommandMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const scrollMenuIntoView = () => {
@@ -34,8 +29,7 @@ export function CommandMenu({
       return;
     }
 
-    const optionElements =
-      menuRef.current.querySelectorAll<HTMLElement>('[data-option]');
+    const optionElements = menuRef.current.querySelectorAll<HTMLElement>('[data-option]');
     const target = optionElements[selectedIndex];
 
     if (target) {
@@ -99,16 +93,13 @@ export function CommandMenu({
           onMouseEnter={() => handleMouseEnter(index)}
           onClick={() => onSelect(option.command)}
         >
-          <span className="text-cyan-400">
-            {index === selectedIndex ? '❯ ' : '  '}
-          </span>
+          <span className="text-cyan-400">{index === selectedIndex ? '❯ ' : '  '}</span>
           <span className="text-yellow-400">{option.command}</span>
           <span className="text-gray-400"> - {option.description}</span>
         </div>
       ))}
       <div className="text-gray-500 text-xs mt-1">
-        Press Enter to execute, Escape to cancel, or start typing to enter
-        manual mode
+        Press Enter to execute, Escape to cancel, or start typing to enter manual mode
       </div>
     </div>
   );

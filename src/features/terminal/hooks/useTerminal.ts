@@ -1,8 +1,8 @@
-import {useEffect} from 'react';
-import {useTerminalState} from './useTerminalState';
-import {useTerminalUI} from './useTerminalUI';
-import {useTerminalAnimations} from './useTerminalAnimations';
-import {useTerminalCommands} from './useTerminalCommands';
+import { useEffect } from 'react';
+import { useTerminalState } from './useTerminalState';
+import { useTerminalUI } from './useTerminalUI';
+import { useTerminalAnimations } from './useTerminalAnimations';
+import { useTerminalCommands } from './useTerminalCommands';
 import type {
   TerminalState,
   TerminalStateSetters,
@@ -13,7 +13,7 @@ import type {
   CommandHandlers,
   DownloadHandlers,
   AnimationHandlers,
-  UIUtils
+  UIUtils,
 } from '@/types/terminalTypes';
 
 /**
@@ -21,12 +21,18 @@ import type {
  * This hook maintains the same API as the original monolithic hook
  * but delegates responsibilities to smaller, more focused hooks
  */
-export function useTerminal(): TerminalState & TerminalStateSetters & 
-  MenuState & MenuStateSetters & 
-  AnimationState & AnimationStateSetters & 
-  CommandHandlers & DownloadHandlers & AnimationHandlers & UIUtils & {
-  terminalContentRef: React.RefObject<HTMLDivElement | null>;
-} {
+export function useTerminal(): TerminalState &
+  TerminalStateSetters &
+  MenuState &
+  MenuStateSetters &
+  AnimationState &
+  AnimationStateSetters &
+  CommandHandlers &
+  DownloadHandlers &
+  AnimationHandlers &
+  UIUtils & {
+    terminalContentRef: React.RefObject<HTMLDivElement | null>;
+  } {
   // Terminal state management
   const {
     currentInput,
@@ -72,7 +78,12 @@ export function useTerminal(): TerminalState & TerminalStateSetters &
     handleDownloadConfirm,
     handleDownloadCancel,
     handleDownloadComplete,
-  } = useTerminalAnimations(setCommandHistory, setShowMenuPrompt, setShowCommandMenu, scrollToBottom);
+  } = useTerminalAnimations(
+    setCommandHistory,
+    setShowMenuPrompt,
+    setShowCommandMenu,
+    scrollToBottom,
+  );
 
   // Command handling
   const {
@@ -99,7 +110,7 @@ export function useTerminal(): TerminalState & TerminalStateSetters &
     setIsHackingSequence,
     setHackingLines,
     setShowShutdownSequence,
-    scrollToBottom
+    scrollToBottom,
   );
 
   // Initialize hacking sequence on mount

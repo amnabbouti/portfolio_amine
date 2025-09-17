@@ -2,7 +2,8 @@ export function InfoBar() {
   return (
     <div className="text-white font-mono text-sm space-y-1">
       <div>
-        <span className="text-cyan-400">STATUS&nbsp;&nbsp;:</span> <span className="text-green-400">AVAILABLE FOR WORK</span>
+        <span className="text-cyan-400">STATUS&nbsp;&nbsp;:</span>{' '}
+        <span className="text-green-400">AVAILABLE FOR WORK</span>
       </div>
       <div>
         <span className="text-cyan-400">LOCATION:</span> <span className="text-white">EARTH</span>

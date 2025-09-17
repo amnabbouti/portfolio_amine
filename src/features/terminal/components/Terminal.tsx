@@ -1,12 +1,7 @@
 import { useEffect } from 'react';
 import { useTerminal } from '@/features/terminal/hooks';
 import { menuOptions } from '@/data';
-import {
-  HackingSequence,
-  TerminalOutput,
-  TerminalInput,
-  CommandMenu,
-} from '.';
+import { HackingSequence, TerminalOutput, TerminalInput, CommandMenu } from '.';
 import { ProjectDetailWindow } from './project/ProjectDetailWindow';
 
 /**
@@ -53,12 +48,9 @@ export function Terminal() {
 
   const normalizedFilter = menuFilter.trim().toLowerCase();
   const filteredMenuOptions = normalizedFilter
-    ? menuOptions.filter((option) =>
-        option.command.toLowerCase().startsWith(normalizedFilter),
-      )
+    ? menuOptions.filter(option => option.command.toLowerCase().startsWith(normalizedFilter))
     : menuOptions;
-  const visibleMenuOptions =
-    filteredMenuOptions.length > 0 ? filteredMenuOptions : menuOptions;
+  const visibleMenuOptions = filteredMenuOptions.length > 0 ? filteredMenuOptions : menuOptions;
 
   const handleMenuNavigate = (direction: 'up' | 'down') => {
     const optionsLength = visibleMenuOptions.length;
@@ -67,13 +59,9 @@ export function Terminal() {
     }
 
     if (direction === 'up') {
-      setSelectedMenuIndex((prev) =>
-        prev === 0 ? optionsLength - 1 : prev - 1,
-      );
+      setSelectedMenuIndex(prev => (prev === 0 ? optionsLength - 1 : prev - 1));
     } else {
-      setSelectedMenuIndex((prev) =>
-        prev === optionsLength - 1 ? 0 : prev + 1,
-      );
+      setSelectedMenuIndex(prev => (prev === optionsLength - 1 ? 0 : prev + 1));
     }
   };
 
@@ -100,8 +88,7 @@ export function Terminal() {
     setMenuFilter('');
     setTimeout(() => {
       if (terminalContentRef.current) {
-        terminalContentRef.current.scrollTop =
-          terminalContentRef.current.scrollHeight;
+        terminalContentRef.current.scrollTop = terminalContentRef.current.scrollHeight;
       }
     }, 50);
   };
@@ -127,9 +114,10 @@ export function Terminal() {
     }
   }, [showCommandMenu, visibleMenuOptions.length, selectedMenuIndex, setSelectedMenuIndex]);
 
-  const safeSelectedIndex = visibleMenuOptions.length === 0
-    ? 0
-    : Math.min(selectedMenuIndex, visibleMenuOptions.length - 1);
+  const safeSelectedIndex =
+    visibleMenuOptions.length === 0
+      ? 0
+      : Math.min(selectedMenuIndex, visibleMenuOptions.length - 1);
 
   return (
     <div className="h-full bg-black text-white font-mono p-4 sm:p-6 md:p-8 text-sm sm:text-base overflow-hidden">
@@ -174,8 +162,7 @@ export function Terminal() {
                   onAutocomplete={handleAutocomplete}
                   onMenuSelect={() => {
                     const selectedCommand =
-                      visibleMenuOptions[safeSelectedIndex]?.command ??
-                      menuOptions[0].command;
+                      visibleMenuOptions[safeSelectedIndex]?.command ?? menuOptions[0].command;
                     handleMenuSelect(selectedCommand);
                   }}
                   onMenuEscape={handleMenuEscape}
@@ -184,7 +171,7 @@ export function Terminal() {
             </div>
           )}
 
-          {showCommandMenu || commandHistory.some((cmd) => cmd.showMenu) ? (
+          {showCommandMenu || commandHistory.some(cmd => cmd.showMenu) ? (
             <CommandMenu
               selectedIndex={safeSelectedIndex}
               onSelect={handleMenuSelect}
@@ -194,10 +181,7 @@ export function Terminal() {
             />
           ) : null}
           {activeCaseStudy ? (
-            <ProjectDetailWindow
-              study={activeCaseStudy}
-              onClose={() => setActiveCaseStudy(null)}
-            />
+            <ProjectDetailWindow study={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} />
           ) : null}
         </div>
       </div>

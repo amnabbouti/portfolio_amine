@@ -79,7 +79,7 @@ export function TerminalInput({
             ref={inputRef}
             type="text"
             value={currentInput}
-            onChange={(e) => onInputChange(e.target.value)}
+            onChange={e => onInputChange(e.target.value)}
             onKeyDown={handleKeyDown}
             className="bg-transparent border-none outline-none text-cyan-400 w-full font-mono"
             autoComplete="off"

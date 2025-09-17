@@ -33,6 +33,8 @@ Thumbs.db
 *.tgz
 *.orig
 AGENTS.md
+/docs/*
+docs/STRUCTURE_TODO.md
 
 # Personal/temporary assets
 src/assets/CV-AMINE-ABBOUTI.pdf

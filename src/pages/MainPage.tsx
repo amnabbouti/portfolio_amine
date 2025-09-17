@@ -25,10 +25,7 @@ function MainPage() {
         </div>
       )}
 
-      <MatrixRain
-        isActive={showEntryAnimation}
-        onComplete={handleMatrixComplete}
-      />
+      <MatrixRain isActive={showEntryAnimation} onComplete={handleMatrixComplete} />
     </>
   );
 }

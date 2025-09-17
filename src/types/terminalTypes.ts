@@ -1,4 +1,4 @@
-import type {Command} from './terminal';
+import type { Command } from './terminal';
 
 // Terminal state types
 export interface TerminalState {

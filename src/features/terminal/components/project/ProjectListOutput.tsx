@@ -7,16 +7,12 @@ interface ProjectListOutputProps {
 
 export function ProjectListOutput({ items, onSelect }: ProjectListOutputProps) {
   if (items.length === 0) {
-    return (
-      <div className="text-gray-500 text-sm mt-2">
-        No projects found. Check back later.
-      </div>
-    );
+    return <div className="text-gray-500 text-sm mt-2">No projects found. Check back later.</div>;
   }
 
   return (
     <div className="mt-2 space-y-2">
-      {items.map((item) => (
+      {items.map(item => (
         <button
           key={item.slug}
           type="button"
@@ -25,9 +21,7 @@ export function ProjectListOutput({ items, onSelect }: ProjectListOutputProps) {
         >
           <div className="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500">
             <span>{item.slug}</span>
-            <span className="text-cyan-400 group-hover:text-green-400">
-              OPEN ⏎
-            </span>
+            <span className="text-cyan-400 group-hover:text-green-400">OPEN ⏎</span>
           </div>
           <div className="text-lg font-semibold text-green-300 group-hover:text-green-200">
             {item.title}

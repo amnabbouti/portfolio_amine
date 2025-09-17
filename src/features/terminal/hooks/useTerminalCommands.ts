@@ -1,15 +1,15 @@
-import type {Command, ProjectListItem, CaseStudy} from '@/types';
-import type {CommandHandlers} from '@/types/terminalTypes';
-import {commands, menuOptions, caseStudies} from '@/data';
+import type { Command, ProjectListItem, CaseStudy } from '@/types';
+import type { CommandHandlers } from '@/types/terminalTypes';
+import { commands, menuOptions, caseStudies } from '@/data';
 
 const availableCommands = Array.from(
   new Set([
-    ...menuOptions.map((option) => option.command.toLowerCase()),
-    ...Object.keys(commands).map((key) => key.toLowerCase()),
+    ...menuOptions.map(option => option.command.toLowerCase()),
+    ...Object.keys(commands).map(key => key.toLowerCase()),
   ]),
 );
 
-const projectSummaries: ProjectListItem[] = caseStudies.map((study) => ({
+const projectSummaries: ProjectListItem[] = caseStudies.map(study => ({
   slug: study.slug,
   title: study.title,
   summary: study.summary,
@@ -37,18 +37,14 @@ export function useTerminalCommands(
   setIsHackingSequence: React.Dispatch<React.SetStateAction<boolean>>,
   setHackingLines: React.Dispatch<React.SetStateAction<string[]>>,
   setShowShutdownSequence: React.Dispatch<React.SetStateAction<boolean>>,
-  scrollToBottom: () => void
+  scrollToBottom: () => void,
 ): CommandHandlers {
   /**
    * Handle special commands like resume, hack, clear
    */
-  const handleSpecialCommand = (
-    cmd: string,
-    baseCommand: string,
-    args: string[],
-  ): boolean => {
+  const handleSpecialCommand = (cmd: string, baseCommand: string, args: string[]): boolean => {
     if (baseCommand === 'resume' && args.length === 0) {
-      setCommandHistory((prev) => [
+      setCommandHistory(prev => [
         ...prev,
         {
           command: cmd,
@@ -90,11 +86,9 @@ export function useTerminalCommands(
       const slug = args.join(' ');
 
       if (slug === '') {
-        const summaryLines = caseStudies.flatMap((study) => [
-          `  - ${study.slug} — ${study.summary}`,
-        ]);
+        const summaryLines = caseStudies.flatMap(study => [`  - ${study.slug} — ${study.summary}`]);
 
-        setCommandHistory((prev) => [
+        setCommandHistory(prev => [
           ...prev,
           {
             command: cmd,
@@ -116,19 +110,17 @@ export function useTerminalCommands(
         return true;
       }
 
-      const match = caseStudies.find(
-        (study) => study.slug.toLowerCase() === slug.toLowerCase(),
-      );
+      const match = caseStudies.find(study => study.slug.toLowerCase() === slug.toLowerCase());
 
       if (!match) {
-        setCommandHistory((prev) => [
+        setCommandHistory(prev => [
           ...prev,
           {
             command: cmd,
             output: [
               `No case study found for "${slug}".`,
               'Available slugs:',
-              ...caseStudies.map((study) => `  - ${study.slug}`),
+              ...caseStudies.map(study => `  - ${study.slug}`),
               '',
             ],
             isError: true,
@@ -154,13 +146,13 @@ export function useTerminalCommands(
         `Context: ${match.context}`,
         '',
         'Challenge:',
-        ...match.challenge.map((item) => `  • ${item}`),
+        ...match.challenge.map(item => `  • ${item}`),
         '',
         'Solution:',
-        ...match.solution.map((item) => `  • ${item}`),
+        ...match.solution.map(item => `  • ${item}`),
         '',
         'Impact:',
-        ...match.impact.map((item) => `  • ${item}`),
+        ...match.impact.map(item => `  • ${item}`),
         '',
         `Stack: ${match.stack.join(', ')}`,
       ];
@@ -168,14 +160,12 @@ export function useTerminalCommands(
       if (match.links && match.links.length > 0) {
         outputLines.push('');
         outputLines.push('Artifacts:');
-        outputLines.push(
-          ...match.links.map((link) => `  • ${link.label}: ${link.url}`),
-        );
+        outputLines.push(...match.links.map(link => `  • ${link.label}: ${link.url}`));
       }
 
       outputLines.push('');
 
-      setCommandHistory((prev) => [
+      setCommandHistory(prev => [
         ...prev,
         {
           command: cmd,
@@ -195,7 +185,7 @@ export function useTerminalCommands(
     if (baseCommand === 'projects') {
       if (args.length === 0) {
         setActiveCaseStudy(null);
-        setCommandHistory((prev) => [
+        setCommandHistory(prev => [
           ...prev,
           {
             command: cmd,
@@ -213,19 +203,17 @@ export function useTerminalCommands(
       }
 
       const slug = args.join(' ');
-      const match = caseStudies.find(
-        (study) => study.slug.toLowerCase() === slug.toLowerCase(),
-      );
+      const match = caseStudies.find(study => study.slug.toLowerCase() === slug.toLowerCase());
 
       if (!match) {
-        setCommandHistory((prev) => [
+        setCommandHistory(prev => [
           ...prev,
           {
             command: cmd,
             output: [
               `No project found for "${slug}".`,
               'Available slugs:',
-              ...caseStudies.map((study) => `  - ${study.slug}`),
+              ...caseStudies.map(study => `  - ${study.slug}`),
               '',
             ],
             isError: true,
@@ -240,7 +228,7 @@ export function useTerminalCommands(
       }
 
       setActiveCaseStudy(match);
-      setCommandHistory((prev) => [
+      setCommandHistory(prev => [
         ...prev,
         {
           command: cmd,
@@ -288,7 +276,7 @@ export function useTerminalCommands(
     }
 
     if (command.output === 'DOWNLOAD_PROGRESS') {
-      setCommandHistory((prev) => [
+      setCommandHistory(prev => [
         ...prev,
         {
           command: cmd,
@@ -309,7 +297,7 @@ export function useTerminalCommands(
     }
 
     if (command.output === 'SHUTDOWN_SEQUENCE') {
-      setCommandHistory((prev) => [
+      setCommandHistory(prev => [
         ...prev,
         {
           command: cmd,
@@ -341,7 +329,7 @@ export function useTerminalCommands(
     setActiveCaseStudy(null);
 
     if (clearMenuEntries) {
-      setCommandHistory((prev) => prev.filter((cmd) => !cmd.showMenu));
+      setCommandHistory(prev => prev.filter(cmd => !cmd.showMenu));
     }
 
     // Handle special commands first
@@ -358,7 +346,7 @@ export function useTerminalCommands(
       }
 
       // Handle regular commands with text output
-      setCommandHistory((prev) => [
+      setCommandHistory(prev => [
         ...prev,
         {
           command: cmd,
@@ -372,7 +360,7 @@ export function useTerminalCommands(
       }, 100);
     } else {
       // Handle command not found
-      setCommandHistory((prev) => [
+      setCommandHistory(prev => [
         ...prev,
         {
           command: cmd,
@@ -422,9 +410,7 @@ export function useTerminalCommands(
       return;
     }
 
-    const matches = availableCommands.filter((command) =>
-      command.startsWith(normalizedInput),
-    );
+    const matches = availableCommands.filter(command => command.startsWith(normalizedInput));
 
     if (matches.length === 0) {
       setShowCommandMenu(false);
@@ -457,7 +443,7 @@ export function useTerminalCommands(
     setCurrentInput(suggestion);
     setShowMenuPrompt(false);
 
-    const hasMenuMatches = menuOptions.some((option) =>
+    const hasMenuMatches = menuOptions.some(option =>
       option.command.toLowerCase().startsWith(suggestion),
     );
 
@@ -481,7 +467,7 @@ export function useTerminalCommands(
       setShowCommandMenu(true);
       setSelectedMenuIndex(0);
       setMenuFilter('');
-      setCommandHistory((prev) => prev.filter((cmd) => !cmd.showMenu));
+      setCommandHistory(prev => prev.filter(cmd => !cmd.showMenu));
       setTimeout(scrollToBottom, 50);
       return;
     }
@@ -501,17 +487,13 @@ export function useTerminalCommands(
       const newIndex = historyIndex + 1;
       if (newIndex < commandHistory.length) {
         setHistoryIndex(newIndex);
-        setCurrentInput(
-          commandHistory[commandHistory.length - 1 - newIndex].command,
-        );
+        setCurrentInput(commandHistory[commandHistory.length - 1 - newIndex].command);
       }
     } else if (direction === 'down') {
       if (historyIndex > 0) {
         const newIndex = historyIndex - 1;
         setHistoryIndex(newIndex);
-        setCurrentInput(
-          commandHistory[commandHistory.length - 1 - newIndex].command,
-        );
+        setCurrentInput(commandHistory[commandHistory.length - 1 - newIndex].command);
       } else if (historyIndex === 0) {
         setHistoryIndex(-1);
         setCurrentInput('');

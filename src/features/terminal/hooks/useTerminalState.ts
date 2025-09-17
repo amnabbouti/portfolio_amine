@@ -1,6 +1,6 @@
-import {useState, useEffect} from 'react';
-import type {Command} from '@/types';
-import type {TerminalState, TerminalStateSetters} from '@/types/terminalTypes';
+import { useState, useEffect } from 'react';
+import type { Command } from '@/types';
+import type { TerminalState, TerminalStateSetters } from '@/types/terminalTypes';
 
 /**
  * Hook for managing basic terminal state
@@ -16,7 +16,7 @@ export function useTerminalState(): TerminalState & TerminalStateSetters {
   // Cursor blinking effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setShowCursor((prev) => !prev);
+      setShowCursor(prev => !prev);
     }, 500);
     return () => clearInterval(interval);
   }, []);

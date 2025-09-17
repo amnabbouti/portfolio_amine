@@ -24,11 +24,8 @@ export function ShutdownSequence({ onComplete }: ShutdownSequenceProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       if (currentLineIndex < shutdownSequence.length) {
-        setShutdownLines((prev) => [
-          ...prev,
-          shutdownSequence[currentLineIndex],
-        ]);
-        setCurrentLineIndex((prev) => prev + 1);
+        setShutdownLines(prev => [...prev, shutdownSequence[currentLineIndex]]);
+        setCurrentLineIndex(prev => prev + 1);
       } else {
         clearInterval(interval);
         setTimeout(() => {
@@ -43,7 +40,7 @@ export function ShutdownSequence({ onComplete }: ShutdownSequenceProps) {
   useEffect(() => {
     if (showProgress) {
       const interval = setInterval(() => {
-        setProgress((prev) => {
+        setProgress(prev => {
           const increment = Math.random() * 8 + 2;
           const newProgress = Math.min(prev + increment, 100);
 
@@ -64,11 +61,7 @@ export function ShutdownSequence({ onComplete }: ShutdownSequenceProps) {
   }, [showProgress]);
 
   const handleShutdownComplete = () => {
-    setShutdownLines((prev) => [
-      ...prev,
-      'System shutdown complete.',
-      'Goodbye.',
-    ]);
+    setShutdownLines(prev => [...prev, 'System shutdown complete.', 'Goodbye.']);
 
     setTimeout(() => {
       closeTab();
@@ -89,9 +82,7 @@ export function ShutdownSequence({ onComplete }: ShutdownSequenceProps) {
 
   return (
     <div className="mt-4">
-      <div className="text-red-400 font-bold mb-2">
-        🔴 SYSTEM SHUTDOWN INITIATED
-      </div>
+      <div className="text-red-400 font-bold mb-2">🔴 SYSTEM SHUTDOWN INITIATED</div>
 
       {shutdownLines.map((line, index) => (
         <div key={index} className="text-red-300 mb-1">

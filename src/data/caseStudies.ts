@@ -6,7 +6,8 @@ export const caseStudies: CaseStudy[] = [
     title: 'Missions Control Field Operations Platform',
     role: 'Lead Full Stack Developer',
     timeframe: '2023',
-    summary: 'Unified mobile + web tooling for dispatchers and field agents with real-time mission tracking.',
+    summary:
+      'Unified mobile + web tooling for dispatchers and field agents with real-time mission tracking.',
     context:
       'A logistics provider needed to replace spreadsheets and fragmented tools with a single source of truth for live missions.',
     challenge: [
@@ -96,17 +97,12 @@ export const caseStudies: CaseStudy[] = [
       'Reduced average page weight by 54%, boosting Lighthouse performance scores into the 90s.',
       'Cut support escalations around failed orders by 70% thanks to automated retry + alerting flows.',
     ],
-    stack: [
-      'React',
-      'Node.js',
-      'TypeScript',
-      'Tailwind CSS',
-      'MongoDB',
-      'Vercel',
-      'Stripe',
-    ],
+    stack: ['React', 'Node.js', 'TypeScript', 'Tailwind CSS', 'MongoDB', 'Vercel', 'Stripe'],
     links: [
-      { label: 'Storefront repo (selected modules)', url: 'https://github.com/amine-abbouti?tab=repositories' },
+      {
+        label: 'Storefront repo (selected modules)',
+        url: 'https://github.com/amine-abbouti?tab=repositories',
+      },
     ],
   },
 ];

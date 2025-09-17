@@ -6,13 +6,9 @@ interface ProjectDetailWindowProps {
   onClose: () => void;
 }
 
-const accentClass = (accent: boolean) =>
-  accent ? 'text-green-400' : 'text-green-300/80';
+const accentClass = (accent: boolean) => (accent ? 'text-green-400' : 'text-green-300/80');
 
-export function ProjectDetailWindow({
-  study,
-  onClose,
-}: ProjectDetailWindowProps) {
+export function ProjectDetailWindow({ study, onClose }: ProjectDetailWindowProps) {
   return (
     <div className="fixed inset-0 z-[10000] bg-black/85 backdrop-blur-sm flex items-center justify-center px-4 py-10">
       <div className="relative w-full max-w-4xl max-h-full overflow-hidden border border-green-500/50 bg-gray-950 text-gray-100 shadow-lg shadow-green-500/10">
@@ -21,9 +17,7 @@ export function ProjectDetailWindow({
             <div className="text-xs uppercase tracking-[0.3em] text-green-400/80">
               PROJECT DOSSIER
             </div>
-            <div className="text-lg font-semibold text-green-200">
-              {study.title}
-            </div>
+            <div className="text-lg font-semibold text-green-200">{study.title}</div>
           </div>
           <button
             type="button"
@@ -65,8 +59,7 @@ export function ProjectDetailWindow({
                 </div>
                 {study.timeframe ? (
                   <div>
-                    <span className="text-green-300">Timeframe:</span>{' '}
-                    {study.timeframe}
+                    <span className="text-green-300">Timeframe:</span> {study.timeframe}
                   </div>
                 ) : null}
               </div>
@@ -74,7 +67,7 @@ export function ProjectDetailWindow({
 
             <Section title="Stack">
               <div className="flex flex-wrap gap-2">
-                {study.stack.map((tech) => (
+                {study.stack.map(tech => (
                   <span
                     key={tech}
                     className="rounded border border-green-500/30 bg-green-500/5 px-2 py-1 text-xs uppercase tracking-wide text-green-300"
@@ -88,7 +81,7 @@ export function ProjectDetailWindow({
             {study.links && study.links.length > 0 ? (
               <Section title="Artifacts">
                 <ul className="space-y-2 text-sm text-cyan-300">
-                  {study.links.map((link) => (
+                  {study.links.map(link => (
                     <li key={link.url}>
                       <a
                         href={link.url}
@@ -119,17 +112,10 @@ interface SectionProps {
 function Section({ title, children, accent = false }: SectionProps) {
   return (
     <section>
-      <h3
-        className={
-          'text-xs font-semibold uppercase tracking-[0.3em] ' +
-          accentClass(accent)
-        }
-      >
+      <h3 className={'text-xs font-semibold uppercase tracking-[0.3em] ' + accentClass(accent)}>
         {title}
       </h3>
-      <div className="mt-2 space-y-2 border-l border-green-500/20 pl-4">
-        {children}
-      </div>
+      <div className="mt-2 space-y-2 border-l border-green-500/20 pl-4">{children}</div>
     </section>
   );
 }
@@ -145,9 +131,7 @@ function BulletList({ items, emphasis = false }: BulletListProps) {
       {items.map((item, index) => (
         <li key={item + '-' + index} className="flex gap-2">
           <span className="text-green-400">▹</span>
-          <span className={emphasis ? 'text-green-200' : 'text-gray-300'}>
-            {item}
-          </span>
+          <span className={emphasis ? 'text-green-200' : 'text-gray-300'}>{item}</span>
         </li>
       ))}
     </ul>

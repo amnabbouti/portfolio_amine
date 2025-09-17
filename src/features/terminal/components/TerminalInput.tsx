@@ -1,4 +1,4 @@
-import {useTerminalKeyboard} from '@/hooks/useTerminalKeyboard';
+import {useTerminalKeyboard} from '@/features/terminal/hooks/useTerminalKeyboard';
 
 /**
  * Props for the TerminalInput component

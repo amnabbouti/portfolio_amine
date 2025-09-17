@@ -4,7 +4,7 @@ import {
     DownloadConfirmation,
     ShutdownSequence
 } from '.';
-import {makeContactClickable} from '@/utils/terminalUtils';
+import {makeContactClickable} from '@/features/terminal/utils/terminalUtils';
 
 interface TerminalOutputProps {
     commandHistory: Command[];

@@ -1,11 +1,6 @@
-import {useTerminal} from '@/hooks';
+import {useTerminal} from '@/features/terminal/hooks';
 import {menuOptions} from '@/data';
-import {
-    HackingSequence,
-    TerminalOutput,
-    TerminalInput,
-    CommandMenu
-} from '.';
+import { HackingSequence, TerminalOutput, TerminalInput, CommandMenu } from '.';
 
 /**
  * Terminal Component

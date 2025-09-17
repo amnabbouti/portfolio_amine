@@ -8,3 +8,4 @@ export { ShutdownSequence } from './ShutdownSequence';
 export { DownloadConfirmation } from './DownloadConfirmation';
 export { MatrixRain } from './MatrixRain';
 export { ProjectListOutput } from './project/ProjectListOutput';
+export { SkillListOutput } from './skill/SkillListOutput';

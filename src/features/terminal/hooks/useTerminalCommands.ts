@@ -1,6 +1,12 @@
-import type { Command, ProjectListItem, CaseStudy } from '@/types';
+import type {
+  Command,
+  ProjectListItem,
+  CaseStudy,
+  SkillCategory,
+  SkillCategorySummary,
+} from '@/types';
 import type { CommandHandlers } from '@/types/terminalTypes';
-import { commands, menuOptions, caseStudies } from '@/data';
+import { commands, menuOptions, caseStudies, skillCategories } from '@/data';
 
 const availableCommands = Array.from(
   new Set([
@@ -13,6 +19,13 @@ const projectSummaries: ProjectListItem[] = caseStudies.map(study => ({
   slug: study.slug,
   title: study.title,
   summary: study.summary,
+}));
+
+const skillSummaries: SkillCategorySummary[] = skillCategories.map(category => ({
+  slug: category.slug,
+  label: category.label,
+  teaser: category.tagline,
+  primaryTools: category.stack.slice(0, 3).map(item => item.name),
 }));
 
 /**
@@ -33,6 +46,7 @@ export function useTerminalCommands(
   setSelectedMenuIndex: React.Dispatch<React.SetStateAction<number>>,
   setMenuFilter: React.Dispatch<React.SetStateAction<string>>,
   setActiveCaseStudy: React.Dispatch<React.SetStateAction<CaseStudy | null>>,
+  setActiveSkillCategory: React.Dispatch<React.SetStateAction<SkillCategory | null>>,
   setShowDownloadConfirmation: React.Dispatch<React.SetStateAction<boolean>>,
   setIsHackingSequence: React.Dispatch<React.SetStateAction<boolean>>,
   setHackingLines: React.Dispatch<React.SetStateAction<string[]>>,
@@ -54,6 +68,7 @@ export function useTerminalCommands(
       ]);
       setShowDownloadConfirmation(true);
       setActiveCaseStudy(null);
+      setActiveSkillCategory(null);
       return true;
     }
 
@@ -62,6 +77,7 @@ export function useTerminalCommands(
       setHackingLines([]);
       setCommandHistory([]);
       setActiveCaseStudy(null);
+      setActiveSkillCategory(null);
       return true;
     }
 
@@ -78,6 +94,7 @@ export function useTerminalCommands(
       setSelectedMenuIndex(0);
       setMenuFilter('');
       setActiveCaseStudy(null);
+      setActiveSkillCategory(null);
       setTimeout(scrollToBottom, 50);
       return true;
     }
@@ -88,6 +105,7 @@ export function useTerminalCommands(
       if (slug === '') {
         const summaryLines = caseStudies.flatMap(study => [`  - ${study.slug} — ${study.summary}`]);
 
+        setActiveSkillCategory(null);
         setCommandHistory(prev => [
           ...prev,
           {
@@ -113,6 +131,7 @@ export function useTerminalCommands(
       const match = caseStudies.find(study => study.slug.toLowerCase() === slug.toLowerCase());
 
       if (!match) {
+        setActiveSkillCategory(null);
         setCommandHistory(prev => [
           ...prev,
           {
@@ -140,6 +159,7 @@ export function useTerminalCommands(
       }
       headerLineParts.push(`— ${match.role}`);
 
+      setActiveSkillCategory(null);
       const outputLines = [
         headerLineParts.join(' '),
         '',
@@ -185,6 +205,7 @@ export function useTerminalCommands(
     if (baseCommand === 'projects') {
       if (args.length === 0) {
         setActiveCaseStudy(null);
+        setActiveSkillCategory(null);
         setCommandHistory(prev => [
           ...prev,
           {
@@ -206,6 +227,7 @@ export function useTerminalCommands(
       const match = caseStudies.find(study => study.slug.toLowerCase() === slug.toLowerCase());
 
       if (!match) {
+        setActiveSkillCategory(null);
         setCommandHistory(prev => [
           ...prev,
           {
@@ -228,11 +250,80 @@ export function useTerminalCommands(
       }
 
       setActiveCaseStudy(match);
+      setActiveSkillCategory(null);
       setCommandHistory(prev => [
         ...prev,
         {
           command: cmd,
-          output: [`Opening project detail for ${match.title}`, ''],
+          output: [],
+          isError: false,
+        },
+      ]);
+
+      setTimeout(() => {
+        setShowMenuPrompt(true);
+      }, 100);
+      setTimeout(scrollToBottom, 100);
+      return true;
+    }
+
+    if (baseCommand === 'skills') {
+      if (args.length === 0) {
+        setActiveCaseStudy(null);
+        setActiveSkillCategory(null);
+        setCommandHistory(prev => [
+          ...prev,
+          {
+            command: cmd,
+            output: ['Skills manifest', ''],
+            isError: false,
+            skillList: skillSummaries,
+          },
+        ]);
+
+        setTimeout(() => {
+          setShowMenuPrompt(true);
+        }, 100);
+        setTimeout(scrollToBottom, 100);
+        return true;
+      }
+
+      const slug = args.join(' ');
+      const match = skillCategories.find(
+        category => category.slug.toLowerCase() === slug.toLowerCase(),
+      );
+
+      if (!match) {
+        setActiveSkillCategory(null);
+        setActiveCaseStudy(null);
+        setCommandHistory(prev => [
+          ...prev,
+          {
+            command: cmd,
+            output: [
+              `No skill dossier found for "${slug}".`,
+              'Available dossiers:',
+              ...skillSummaries.map(category => `  - ${category.slug}`),
+              '',
+            ],
+            isError: true,
+          },
+        ]);
+
+        setTimeout(() => {
+          setShowMenuPrompt(true);
+        }, 100);
+        setTimeout(scrollToBottom, 100);
+        return true;
+      }
+
+      setActiveCaseStudy(null);
+      setActiveSkillCategory(match);
+      setCommandHistory(prev => [
+        ...prev,
+        {
+          command: cmd,
+          output: [],
           isError: false,
         },
       ]);
@@ -256,6 +347,8 @@ export function useTerminalCommands(
       setHackingLines([]);
       setCommandHistory([]);
       setMenuFilter('');
+      setActiveCaseStudy(null);
+      setActiveSkillCategory(null);
       return true;
     }
 
@@ -271,6 +364,8 @@ export function useTerminalCommands(
       setShowCommandMenu(true);
       setSelectedMenuIndex(0);
       setMenuFilter('');
+      setActiveCaseStudy(null);
+      setActiveSkillCategory(null);
       setTimeout(scrollToBottom, 50);
       return true;
     }
@@ -285,6 +380,8 @@ export function useTerminalCommands(
         },
       ]);
       setShowDownloadConfirmation(true);
+      setActiveCaseStudy(null);
+      setActiveSkillCategory(null);
       return true;
     }
 
@@ -292,6 +389,8 @@ export function useTerminalCommands(
       setShowCommandMenu(true);
       setSelectedMenuIndex(0);
       setMenuFilter('');
+      setActiveCaseStudy(null);
+      setActiveSkillCategory(null);
       setTimeout(scrollToBottom, 50);
       return true;
     }
@@ -306,6 +405,8 @@ export function useTerminalCommands(
         },
       ]);
       setShowShutdownSequence(true);
+      setActiveCaseStudy(null);
+      setActiveSkillCategory(null);
       return true;
     }
 
@@ -327,6 +428,7 @@ export function useTerminalCommands(
     setShowMenuPrompt(false);
     setMenuFilter('');
     setActiveCaseStudy(null);
+    setActiveSkillCategory(null);
 
     if (clearMenuEntries) {
       setCommandHistory(prev => prev.filter(cmd => !cmd.showMenu));

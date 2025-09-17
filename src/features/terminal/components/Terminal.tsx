@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useTerminal } from '@/features/terminal/hooks';
-import { menuOptions } from '@/data';
+import { menuOptions, skillCategories, caseStudies } from '@/data';
 import { HackingSequence, TerminalOutput, TerminalInput, CommandMenu } from '.';
 import { ProjectDetailWindow } from './project/ProjectDetailWindow';
+import { SkillDetailWindow } from './skill/SkillDetailWindow';
 
 /**
  * Terminal Component
@@ -24,6 +25,7 @@ export function Terminal() {
     showMenuPrompt,
     menuFilter,
     activeCaseStudy,
+    activeSkillCategory,
     terminalContentRef,
     isDownloading,
     isHackingProgress,
@@ -34,6 +36,7 @@ export function Terminal() {
     setShowMenuPrompt,
     setMenuFilter,
     setActiveCaseStudy,
+    setActiveSkillCategory,
     handleCommand,
     handleInputChange,
     handleEnterCommand,
@@ -71,8 +74,29 @@ export function Terminal() {
   };
 
   const handleProjectSelect = (slug: string) => {
-    handleCommand(`projects ${slug}`);
     handleInputChange('');
+    const study = caseStudies.find(item => item.slug === slug);
+
+    if (study) {
+      setActiveSkillCategory(null);
+      setActiveCaseStudy(study);
+      return;
+    }
+
+    handleCommand(`projects ${slug}`);
+  };
+
+  const handleSkillSelect = (slug: string) => {
+    handleInputChange('');
+    const category = skillCategories.find(item => item.slug === slug);
+
+    if (category) {
+      setActiveCaseStudy(null);
+      setActiveSkillCategory(category);
+      return;
+    }
+
+    handleCommand(`skills ${slug}`);
   };
 
   const handleMenuEscape = () => {
@@ -145,6 +169,7 @@ export function Terminal() {
                 onDownloadConfirm={handleDownloadConfirm}
                 onDownloadCancel={handleDownloadCancel}
                 onProjectSelect={handleProjectSelect}
+                onSkillSelect={handleSkillSelect}
               />
               {!showDownloadConfirmation && !showShutdownSequence && (
                 <TerminalInput
@@ -182,6 +207,12 @@ export function Terminal() {
           ) : null}
           {activeCaseStudy ? (
             <ProjectDetailWindow study={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} />
+          ) : null}
+          {activeSkillCategory ? (
+            <SkillDetailWindow
+              category={activeSkillCategory}
+              onClose={() => setActiveSkillCategory(null)}
+            />
           ) : null}
         </div>
       </div>

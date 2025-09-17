@@ -2,6 +2,7 @@ import type { Command } from '@/types';
 import { ProgressBar, DownloadConfirmation, ShutdownSequence } from '.';
 import { makeContactClickable } from '@/features/terminal/utils/terminalUtils';
 import { ProjectListOutput } from './project/ProjectListOutput';
+import { SkillListOutput } from './skill/SkillListOutput';
 
 interface TerminalOutputProps {
   commandHistory: Command[];
@@ -13,6 +14,7 @@ interface TerminalOutputProps {
   onDownloadConfirm: () => void;
   onDownloadCancel: () => void;
   onProjectSelect: (slug: string) => void;
+  onSkillSelect: (slug: string) => void;
 }
 
 export function TerminalOutput({
@@ -25,6 +27,7 @@ export function TerminalOutput({
   onDownloadConfirm,
   onDownloadCancel,
   onProjectSelect,
+  onSkillSelect,
 }: TerminalOutputProps) {
   return (
     <div>
@@ -54,6 +57,9 @@ export function TerminalOutput({
           )}
           {cmd.projectList ? (
             <ProjectListOutput items={cmd.projectList} onSelect={onProjectSelect} />
+          ) : null}
+          {cmd.skillList ? (
+            <SkillListOutput items={cmd.skillList} onSelect={onSkillSelect} />
           ) : null}
           {index === commandHistory.length - 1 && showDownloadConfirmation && (
             <DownloadConfirmation

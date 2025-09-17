@@ -54,15 +54,7 @@ export const commands: Record<string, { output: string[] | string }> = {
     ],
   },
   skills: {
-    output: [
-      'Technical Skills:',
-      '├── Frontend: React, React Native, TypeScript, Next.js, Tailwind CSS',
-      '├── Backend: Node.js, Laravel',
-      '├── Database: PostgreSQL, MongoDB, MySQL, SQLite',
-      '├── Cloud: Docker, google cloud',
-      '└── Tools: Git, Linux, Figma, AI',
-      '',
-    ],
+    output: 'SHOW_SKILLS',
   },
   projects: {
     output: 'SHOW_PROJECTS',

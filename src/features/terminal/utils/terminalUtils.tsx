@@ -5,7 +5,10 @@ export const makeContactClickable = (line: string): React.ReactNode => {
     const email = line.split(':')[1].trim();
     return (
       <>
-        Email: <a href={`mailto:${email}`} className="text-blue-400 hover:underline">{email}</a>
+        Email:{' '}
+        <a href={`mailto:${email}`} className="text-blue-400 hover:underline">
+          {email}
+        </a>
       </>
     );
   }
@@ -13,7 +16,15 @@ export const makeContactClickable = (line: string): React.ReactNode => {
     const linkedin = line.split(':')[1].trim();
     return (
       <>
-        LinkedIn: <a href={`https://${linkedin}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{linkedin}</a>
+        LinkedIn:{' '}
+        <a
+          href={`https://${linkedin}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:underline"
+        >
+          {linkedin}
+        </a>
       </>
     );
   }
@@ -21,7 +32,15 @@ export const makeContactClickable = (line: string): React.ReactNode => {
     const github = line.split(':')[1].trim();
     return (
       <>
-        GitHub: <a href={`https://${github}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{github}</a>
+        GitHub:{' '}
+        <a
+          href={`https://${github}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:underline"
+        >
+          {github}
+        </a>
       </>
     );
   }
@@ -29,10 +48,17 @@ export const makeContactClickable = (line: string): React.ReactNode => {
     const twitter = line.split(':')[1].trim();
     return (
       <>
-        Twitter: <a href={`https://twitter.com/${twitter.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{twitter}</a>
+        Twitter:{' '}
+        <a
+          href={`https://twitter.com/${twitter.replace('@', '')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:underline"
+        >
+          {twitter}
+        </a>
       </>
     );
   }
   return line;
 };
-

@@ -25,14 +25,14 @@ export function ProjectListOutput({ items, onSelect }: ProjectListOutputProps) {
         >
           <div className="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500">
             <span>{item.slug}</span>
-            <span className="text-cyan-400 group-hover:text-green-400">OPEN ⏎</span>
+            <span className="text-cyan-400 group-hover:text-green-400">
+              OPEN ⏎
+            </span>
           </div>
           <div className="text-lg font-semibold text-green-300 group-hover:text-green-200">
             {item.title}
           </div>
-          <div className="text-sm text-gray-300">
-            {item.summary}
-          </div>
+          <div className="text-sm text-gray-300">{item.summary}</div>
         </button>
       ))}
     </div>

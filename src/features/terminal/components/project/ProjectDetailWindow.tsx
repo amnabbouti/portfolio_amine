@@ -9,7 +9,10 @@ interface ProjectDetailWindowProps {
 const accentClass = (accent: boolean) =>
   accent ? 'text-green-400' : 'text-green-300/80';
 
-export function ProjectDetailWindow({ study, onClose }: ProjectDetailWindowProps) {
+export function ProjectDetailWindow({
+  study,
+  onClose,
+}: ProjectDetailWindowProps) {
   return (
     <div className="fixed inset-0 z-[10000] bg-black/85 backdrop-blur-sm flex items-center justify-center px-4 py-10">
       <div className="relative w-full max-w-4xl max-h-full overflow-hidden border border-green-500/50 bg-gray-950 text-gray-100 shadow-lg shadow-green-500/10">
@@ -57,9 +60,14 @@ export function ProjectDetailWindow({ study, onClose }: ProjectDetailWindowProps
           <div className="space-y-6">
             <Section title="Role & Scope">
               <div className="space-y-2 text-sm text-gray-300">
-                <div><span className="text-green-300">Role:</span> {study.role}</div>
+                <div>
+                  <span className="text-green-300">Role:</span> {study.role}
+                </div>
                 {study.timeframe ? (
-                  <div><span className="text-green-300">Timeframe:</span> {study.timeframe}</div>
+                  <div>
+                    <span className="text-green-300">Timeframe:</span>{' '}
+                    {study.timeframe}
+                  </div>
                 ) : null}
               </div>
             </Section>
@@ -112,7 +120,10 @@ function Section({ title, children, accent = false }: SectionProps) {
   return (
     <section>
       <h3
-        className={'text-xs font-semibold uppercase tracking-[0.3em] ' + accentClass(accent)}
+        className={
+          'text-xs font-semibold uppercase tracking-[0.3em] ' +
+          accentClass(accent)
+        }
       >
         {title}
       </h3>
@@ -134,7 +145,9 @@ function BulletList({ items, emphasis = false }: BulletListProps) {
       {items.map((item, index) => (
         <li key={item + '-' + index} className="flex gap-2">
           <span className="text-green-400">▹</span>
-          <span className={emphasis ? 'text-green-200' : 'text-gray-300'}>{item}</span>
+          <span className={emphasis ? 'text-green-200' : 'text-gray-300'}>
+            {item}
+          </span>
         </li>
       ))}
     </ul>

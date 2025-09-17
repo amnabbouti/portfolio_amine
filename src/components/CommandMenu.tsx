@@ -1,6 +1,9 @@
 import {useRef, useEffect} from 'react';
 import {menuOptions} from '@/data';
 
+/**
+ * Props for the CommandMenu component
+ */
 interface CommandMenuProps {
     selectedIndex: number;
     onSelect: (command: string) => void;
@@ -8,6 +11,15 @@ interface CommandMenuProps {
     onNavigate: (direction: 'up' | 'down') => void;
 }
 
+/**
+ * Command Menu Component
+ *
+ * Displays a list of available commands that the user can select.
+ * Supports keyboard navigation (arrow keys) and mouse interaction.
+ *
+ * @param props - The component props (see CommandMenuProps interface)
+ * @returns A menu of available commands with selection highlighting
+ */
 export function CommandMenu({
                                 selectedIndex,
                                 onSelect,
@@ -71,7 +83,7 @@ export function CommandMenu({
                 <div
                     key={option.command}
                     className={`text-sm py-0.5 ${
-                        index === selectedIndex ? 'text-white' : 'text-gray-300'
+                        index === selectedIndex ? 'text-white bg-gray-900' : 'text-gray-300'
                     } cursor-pointer hover:bg-gray-900`}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onClick={() => onSelect(option.command)}

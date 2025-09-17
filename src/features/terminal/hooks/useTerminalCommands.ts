@@ -1,6 +1,13 @@
 import type {Command} from '@/types';
 import type {CommandHandlers} from '@/types/terminalTypes';
-import {commands} from '@/data';
+import {commands, menuOptions} from '@/data';
+
+const availableCommands = Array.from(
+  new Set([
+    ...menuOptions.map((option) => option.command.toLowerCase()),
+    ...Object.keys(commands).map((key) => key.toLowerCase()),
+  ]),
+);
 
 /**
  * Hook for handling terminal commands
@@ -202,6 +209,49 @@ export function useTerminalCommands(
   };
 
   /**
+   * Handle tab key press for command autocompletion
+   */
+  const handleAutocomplete = () => {
+    const normalizedInput = currentInput.trim().toLowerCase();
+    const matches = normalizedInput === ''
+      ? availableCommands
+      : availableCommands.filter((command) => command.startsWith(normalizedInput));
+
+    if (matches.length === 0) {
+      return;
+    }
+
+    if (normalizedInput === '') {
+      handleInputChange(matches[0]);
+      return;
+    }
+
+    if (matches.length === 1) {
+      handleInputChange(matches[0]);
+      return;
+    }
+
+    const commonPrefix = matches.reduce((prefix, command) => {
+      let index = 0;
+      while (
+        index < prefix.length &&
+        index < command.length &&
+        prefix[index] === command[index]
+      ) {
+        index += 1;
+      }
+      return prefix.slice(0, index);
+    }, matches[0]);
+
+    if (commonPrefix.length > normalizedInput.length) {
+      handleInputChange(commonPrefix);
+      return;
+    }
+
+    handleInputChange(matches[0]);
+  };
+
+  /**
    * Handle enter key press
    */
   const handleEnterCommand = () => {
@@ -252,5 +302,6 @@ export function useTerminalCommands(
     handleInputChange,
     handleEnterCommand,
     handleHistoryNavigation,
+    handleAutocomplete,
   };
 }

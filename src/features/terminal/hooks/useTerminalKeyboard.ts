@@ -12,6 +12,7 @@ interface KeyboardHandlerProps {
   onMenuSelect?: () => void;
   onMenuEscape?: () => void;
   onShowMenu?: () => void;
+  onAutocomplete?: () => void;
 }
 
 /**
@@ -30,6 +31,7 @@ export function useTerminalKeyboard({
   onMenuSelect,
   onMenuEscape,
   onShowMenu,
+  onAutocomplete,
 }: KeyboardHandlerProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -51,6 +53,9 @@ export function useTerminalKeyboard({
       } else if (e.key === 'ArrowDown') {
         e.preventDefault();
         onMenuNavigate?.('down');
+      } else if (e.key === 'Tab') {
+        e.preventDefault();
+        onMenuNavigate?.('down');
       } else if (e.key === 'Enter') {
         e.preventDefault();
         if (currentInput.trim() === '') {
@@ -66,7 +71,10 @@ export function useTerminalKeyboard({
         onInputChange(currentInput + e.key);
       }
     } else {
-      if (e.key === 'Enter') {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        onAutocomplete?.();
+      } else if (e.key === 'Enter') {
         if (showMenuPrompt && currentInput.trim() === '') {
           onShowMenu?.();
         } else {

@@ -53,6 +53,7 @@ export interface CommandHandlers {
   handleInputChange: (value: string) => void;
   handleEnterCommand: () => void;
   handleHistoryNavigation: (direction: 'up' | 'down') => void;
+  handleAutocomplete: () => void;
 }
 
 // Download handlers

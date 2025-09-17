@@ -76,6 +76,7 @@ export function useTerminal(): TerminalState & TerminalStateSetters &
     handleInputChange,
     handleEnterCommand,
     handleHistoryNavigation,
+    handleAutocomplete,
   } = useTerminalCommands(
     currentInput,
     setCurrentInput,
@@ -132,6 +133,7 @@ export function useTerminal(): TerminalState & TerminalStateSetters &
     handleInputChange,
     handleEnterCommand,
     handleHistoryNavigation,
+    handleAutocomplete,
     handleDownloadConfirm,
     handleDownloadCancel,
     handleDownloadComplete,

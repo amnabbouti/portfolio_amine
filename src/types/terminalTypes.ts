@@ -20,6 +20,7 @@ export interface MenuState {
   showCommandMenu: boolean;
   selectedMenuIndex: number;
   showMenuPrompt: boolean;
+  menuFilter: string;
 }
 
 // Menu state setters
@@ -27,6 +28,7 @@ export interface MenuStateSetters {
   setShowCommandMenu: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedMenuIndex: React.Dispatch<React.SetStateAction<number>>;
   setShowMenuPrompt: React.Dispatch<React.SetStateAction<boolean>>;
+  setMenuFilter: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // Animation state types

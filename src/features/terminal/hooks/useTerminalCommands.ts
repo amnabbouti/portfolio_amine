@@ -25,6 +25,7 @@ export function useTerminalCommands(
   showCommandMenu: boolean,
   setShowCommandMenu: React.Dispatch<React.SetStateAction<boolean>>,
   setSelectedMenuIndex: React.Dispatch<React.SetStateAction<number>>,
+  setMenuFilter: React.Dispatch<React.SetStateAction<string>>,
   setShowDownloadConfirmation: React.Dispatch<React.SetStateAction<boolean>>,
   setIsHackingSequence: React.Dispatch<React.SetStateAction<boolean>>,
   setHackingLines: React.Dispatch<React.SetStateAction<string[]>>,
@@ -66,6 +67,7 @@ export function useTerminalCommands(
       ]);
       setShowCommandMenu(true);
       setSelectedMenuIndex(0);
+      setMenuFilter('');
       setTimeout(scrollToBottom, 50);
       return true;
     }
@@ -81,6 +83,7 @@ export function useTerminalCommands(
       setIsHackingSequence(true);
       setHackingLines([]);
       setCommandHistory([]);
+      setMenuFilter('');
       return true;
     }
 
@@ -95,6 +98,7 @@ export function useTerminalCommands(
       ]);
       setShowCommandMenu(true);
       setSelectedMenuIndex(0);
+      setMenuFilter('');
       setTimeout(scrollToBottom, 50);
       return true;
     }
@@ -115,6 +119,7 @@ export function useTerminalCommands(
     if (command.output === 'SHOW_MENU') {
       setShowCommandMenu(true);
       setSelectedMenuIndex(0);
+      setMenuFilter('');
       setTimeout(scrollToBottom, 50);
       return true;
     }
@@ -145,6 +150,7 @@ export function useTerminalCommands(
     // Reset UI state
     setShowCommandMenu(false);
     setShowMenuPrompt(false);
+    setMenuFilter('');
 
     if (clearMenuEntries) {
       setCommandHistory((prev) => prev.filter((cmd) => !cmd.showMenu));
@@ -203,7 +209,12 @@ export function useTerminalCommands(
     if (showCommandMenu) {
       setShowCommandMenu(false);
     }
-    if (showMenuPrompt) {
+    const trimmedValue = value.trim();
+
+    if (trimmedValue === '') {
+      setMenuFilter('');
+      setShowMenuPrompt(true);
+    } else if (showMenuPrompt) {
       setShowMenuPrompt(false);
     }
   };
@@ -213,42 +224,64 @@ export function useTerminalCommands(
    */
   const handleAutocomplete = () => {
     const normalizedInput = currentInput.trim().toLowerCase();
-    const matches = normalizedInput === ''
-      ? availableCommands
-      : availableCommands.filter((command) => command.startsWith(normalizedInput));
-
-    if (matches.length === 0) {
-      return;
-    }
 
     if (normalizedInput === '') {
-      handleInputChange(matches[0]);
+      setShowMenuPrompt(false);
+      setMenuFilter('');
+      setShowCommandMenu(true);
+      setSelectedMenuIndex(0);
+      setTimeout(scrollToBottom, 50);
       return;
     }
+
+    const matches = availableCommands.filter((command) =>
+      command.startsWith(normalizedInput),
+    );
+
+    if (matches.length === 0) {
+      setShowCommandMenu(false);
+      setMenuFilter('');
+      return;
+    }
+
+    let suggestion = normalizedInput;
 
     if (matches.length === 1) {
-      handleInputChange(matches[0]);
-      return;
-    }
+      suggestion = matches[0];
+    } else {
+      const commonPrefix = matches.reduce((prefix, command) => {
+        let index = 0;
+        while (
+          index < prefix.length &&
+          index < command.length &&
+          prefix[index] === command[index]
+        ) {
+          index += 1;
+        }
+        return prefix.slice(0, index);
+      }, matches[0]);
 
-    const commonPrefix = matches.reduce((prefix, command) => {
-      let index = 0;
-      while (
-        index < prefix.length &&
-        index < command.length &&
-        prefix[index] === command[index]
-      ) {
-        index += 1;
+      if (commonPrefix.length > normalizedInput.length) {
+        suggestion = commonPrefix;
       }
-      return prefix.slice(0, index);
-    }, matches[0]);
-
-    if (commonPrefix.length > normalizedInput.length) {
-      handleInputChange(commonPrefix);
-      return;
     }
 
-    handleInputChange(matches[0]);
+    setCurrentInput(suggestion);
+    setShowMenuPrompt(false);
+
+    const hasMenuMatches = menuOptions.some((option) =>
+      option.command.toLowerCase().startsWith(suggestion),
+    );
+
+    if (hasMenuMatches) {
+      setMenuFilter(suggestion);
+      setShowCommandMenu(true);
+      setSelectedMenuIndex(0);
+      setTimeout(scrollToBottom, 50);
+    } else {
+      setMenuFilter('');
+      setShowCommandMenu(false);
+    }
   };
 
   /**
@@ -259,6 +292,7 @@ export function useTerminalCommands(
       setShowMenuPrompt(false);
       setShowCommandMenu(true);
       setSelectedMenuIndex(0);
+      setMenuFilter('');
       setCommandHistory((prev) => prev.filter((cmd) => !cmd.showMenu));
       setTimeout(scrollToBottom, 50);
       return;

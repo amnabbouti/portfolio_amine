@@ -12,6 +12,7 @@ export function useTerminalUI(): MenuState & MenuStateSetters & UIUtils & {
   const [showCommandMenu, setShowCommandMenu] = useState(false);
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
   const [showMenuPrompt, setShowMenuPrompt] = useState(false);
+  const [menuFilter, setMenuFilter] = useState('');
 
   // Refs
   const terminalContentRef = useRef<HTMLDivElement>(null);
@@ -62,10 +63,12 @@ export function useTerminalUI(): MenuState & MenuStateSetters & UIUtils & {
     showCommandMenu,
     selectedMenuIndex,
     showMenuPrompt,
+    menuFilter,
     terminalContentRef,
     setShowCommandMenu,
     setSelectedMenuIndex,
     setShowMenuPrompt,
+    setMenuFilter,
     scrollToBottom,
     getLineColor,
   };

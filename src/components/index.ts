@@ -1,11 +1,3 @@
-export { Terminal } from '../features/terminal/components/Terminal';
-export { TerminalInput } from '../features/terminal/components/TerminalInput';
-export { TerminalOutput } from '../features/terminal/components/TerminalOutput';
-export { CommandMenu } from '../features/terminal/components/CommandMenu';
-export { HackingSequence } from '../features/terminal/components/HackingSequence';
-export { ProgressBar } from '../features/terminal/components/ProgressBar';
-export { ShutdownSequence } from '../features/terminal/components/ShutdownSequence';
-export { DownloadConfirmation } from '../features/terminal/components/DownloadConfirmation';
-export {Header} from './Header';
-export {InfoBar} from './InfoBar';
-export { MatrixRain } from '../features/terminal/components/MatrixRain';
+// Shared/common components only
+export { Header } from './Header';
+export { InfoBar } from './InfoBar';

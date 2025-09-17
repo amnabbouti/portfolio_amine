@@ -6,6 +6,7 @@ export const menuOptions: MenuOption[] = [
     {command: 'whoami', description: 'Display user information'},
     {command: 'skills', description: 'Show technical skills'},
     {command: 'projects', description: 'List my projects'},
+    {command: 'case-study', description: 'Read detailed project breakdowns'},
     {command: 'experience', description: 'Show work experience'},
     {command: 'contact', description: 'Get contact information'},
     {command: 'hire', description: 'Why you should hire me'},

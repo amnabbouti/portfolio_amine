@@ -1,1 +1,1 @@
-export type { Command, MenuOption } from './terminal'; 
+export type { Command, MenuOption, CaseStudy } from './terminal';

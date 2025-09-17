@@ -1,6 +1,8 @@
 import type {MenuOption} from '@/types';
 
+// Menu options displayed in the terminal menu
 export const menuOptions: MenuOption[] = [
+    // User information commands
     {command: 'whoami', description: 'Display user information'},
     {command: 'skills', description: 'Show technical skills'},
     {command: 'projects', description: 'List my projects'},
@@ -8,38 +10,57 @@ export const menuOptions: MenuOption[] = [
     {command: 'contact', description: 'Get contact information'},
     {command: 'hire', description: 'Why you should hire me'},
     {command: 'resume', description: 'Download my resume'},
+
+    // Fun commands
     {command: 'cowsay', description: 'Motivational cow message'},
     {command: 'fortune', description: 'Get a fortune cookie'},
+
+    // System commands
     {command: 'exit', description: 'Exit terminal'},
     {command: 'clear', description: 'Clear terminal'},
 ];
 
+// Command definitions with their outputs
 export const commands: Record<string, { output: string[] | string }> = {
+    // System commands
     help: {
         output: 'SHOW_MENU',
     },
     menu: {
         output: 'SHOW_MENU',
     },
+    clear: {
+        output: 'CLEAR_TERMINAL',
+    },
+    exit: {
+        output: 'SHUTDOWN_SEQUENCE',
+    },
+    hack: {
+        output: 'RESTART_SEQUENCE',
+    },
+
+    // Profile information commands
     whoami: {
         output: [
-            'AMINE_ABBOUTI',
-            'Full Stack Developer',
-            'Location: Earth, UTC+1',
+            'AMINE_ABBOUTI or you can call me AMINE [without the "e" for flemish people]',
+            'Im Supposed to be a full stack developer',
+            'Specializing in: software development using React, React Native, Node.js, laravel and more.',
+            'I Speak: Dutch, English, French, Amazigh and Arabic',
+            'quirky fact: during my last exam i coded for 40h 27min 51sec straight without sleep.',
+            'another quirky fact: i have read so many books that one time my closet broke under the weight.',
             'Status: Available for work',
-            'Specializing in: Digital solutions that actually work',
+            'Location: All over Belgium and the Netherlands',
             '',
         ],
     },
     skills: {
         output: [
             'Technical Skills:',
-            '├── Frontend: React, TypeScript, Next.js, Tailwind CSS',
-            '├── Backend: Node.js, Python, PHP, Express',
-            '├── Database: PostgreSQL, MongoDB, Redis',
-            '├── Cloud: AWS, Docker, Kubernetes',
-            '├── Tools: Git, Linux, VS Code, Figma',
-            '└── Other: REST APIs, GraphQL, WebSockets',
+            '├── Frontend: React, React Native, TypeScript, Next.js, Tailwind CSS',
+            '├── Backend: Node.js, Laravel',
+            '├── Database: PostgreSQL, MongoDB, MySQL, SQLite',
+            '├── Cloud: Docker, google cloud',
+            '└── Tools: Git, Linux, Figma, AI',
             '',
         ],
     },
@@ -47,10 +68,10 @@ export const commands: Record<string, { output: string[] | string }> = {
         output: [
             'Recent Projects:',
             '1. [E-Commerce Platform] - Full-stack React/Node.js',
-            '2. [Task Management App] - CRUD operations with auth',
-            "3. [Portfolio Website] - The one you're using right now!",
-            '4. [API Gateway] - Microservices architecture',
-            '5. [Chat Application] - Real-time messaging with WebSockets',
+            '2. [Missions control] -  Full-stack React-Native/Laravel',
+            '3. [Portfolio Website] - The one you\'re using right now!',
+            '4. [Super Dashboard] - Next.js with Tailwind CSS/with real time api monitoring and user management',
+            '5. [space web] - Full-stack php/css/js',
             '',
             'Visit my GitHub for more: github.com/amine-abbouti',
             '',
@@ -74,7 +95,7 @@ export const commands: Record<string, { output: string[] | string }> = {
     contact: {
         output: [
             'Contact Information:',
-            'Email: amine.abbouti@example.com',
+            'Email: amine.abbouti@hotmail.com',
             'LinkedIn: linkedin.com/in/amine-abbouti',
             'GitHub: github.com/amine-abbouti',
             'Twitter: @amine_abbouti',
@@ -82,9 +103,6 @@ export const commands: Record<string, { output: string[] | string }> = {
             'Feel free to reach out!',
             '',
         ],
-    },
-    resume: {
-        output: 'DOWNLOAD_PROGRESS',
     },
     hire: {
         output: [
@@ -100,25 +118,22 @@ export const commands: Record<string, { output: string[] | string }> = {
             '',
         ],
     },
-    hack: {
-        output: 'RESTART_SEQUENCE',
+    resume: {
+        output: 'DOWNLOAD_PROGRESS',
     },
-    clear: {
-        output: 'CLEAR_TERMINAL',
-    },
-    exit: {
-        output: 'SHUTDOWN_SEQUENCE',
-    },
+
+    // Fun commands
     cowsay: {
         output: [
-            ' ___________________________________',
-            '< Hire me, I write clean code! >',
-            ' -----------------------------------',
-            '        \\   ^__^',
-            '         \\  (oo)\\_______',
-            '            (__)\\       )\\/\\',
-            '                ||----w |',
-            '                ||     ||',
+            '_____________________________________',
+            '--< Hire me, I write clean code ! >--',
+            '*************************************',
+            '********\\** ^__^ ********************',
+            '*********\\**(oo)\\______ *************',
+            '************(__)\\________)\\/\\********',
+            '****************||----w||************',
+            '****************||*****||************',
+            '*************************************',
             '',
         ],
     },
@@ -130,6 +145,8 @@ export const commands: Record<string, { output: string[] | string }> = {
             '',
         ],
     },
+
+    // Unix-like commands (easter eggs)
     sudo: {
         output: [
             'sudo: command not found',

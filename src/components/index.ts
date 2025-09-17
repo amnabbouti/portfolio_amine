@@ -1,11 +1,3 @@
-export {Terminal} from './Terminal';
-export {TerminalInput} from './TerminalInput';
-export {TerminalOutput} from './TerminalOutput';
-export {CommandMenu} from './CommandMenu';
-export {HackingSequence} from './HackingSequence';
-export {ProgressBar} from './ProgressBar';
-export {ShutdownSequence} from './ShutdownSequence';
-export {DownloadConfirmation} from './DownloadConfirmation';
-export {Header} from './Header';
-export {InfoBar} from './InfoBar';
-export {MatrixRain} from './MatrixRain';
+// Shared/common components only
+export { Header } from './Header';
+export { InfoBar } from './InfoBar';

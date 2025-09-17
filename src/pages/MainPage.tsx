@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Header, Terminal, InfoBar, MatrixRain } from '@/components';
+import { Header, InfoBar } from '@/components';
+import { Terminal, MatrixRain } from '@/features/terminal/components';
 
 function MainPage() {
   const [showEntryAnimation, setShowEntryAnimation] = useState(true);

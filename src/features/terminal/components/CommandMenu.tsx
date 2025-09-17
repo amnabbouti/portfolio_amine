@@ -1,5 +1,5 @@
 import {useRef, useEffect} from 'react';
-import {menuOptions} from '@/data';
+import type {MenuOption} from '@/types';
 
 /**
  * Props for the CommandMenu component
@@ -9,6 +9,7 @@ interface CommandMenuProps {
     onSelect: (command: string) => void;
     onEscape: () => void;
     onNavigate: (direction: 'up' | 'down') => void;
+    options: MenuOption[];
 }
 
 /**
@@ -24,20 +25,23 @@ export function CommandMenu({
                                 selectedIndex,
                                 onSelect,
                                 onNavigate,
+                                options,
                             }: CommandMenuProps) {
     const menuRef = useRef<HTMLDivElement>(null);
 
     const scrollMenuIntoView = () => {
-        if (menuRef.current) {
-            const selectedElement = menuRef.current.children[
-            selectedIndex + 1
-                ] as HTMLElement;
-            if (selectedElement) {
-                selectedElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest',
-                });
-            }
+        if (!menuRef.current || options.length === 0) {
+            return;
+        }
+
+        const optionElements = menuRef.current.querySelectorAll<HTMLElement>('[data-option]');
+        const target = optionElements[selectedIndex];
+
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+            });
         }
     };
 
@@ -79,12 +83,18 @@ export function CommandMenu({
             <div className="text-cyan-400 text-sm mb-1">
                 ? What would you like to do? (Use arrow keys or mouse)
             </div>
-            {menuOptions.map((option, index) => (
+            {options.length === 0 ? (
+                <div className="text-sm py-0.5 text-gray-500">
+          No matching commands. Keep typing to explore more.
+                </div>
+            ) : null}
+            {options.map((option, index) => (
                 <div
                     key={option.command}
                     className={`text-sm py-0.5 ${
                         index === selectedIndex ? 'text-white bg-gray-900' : 'text-gray-300'
                     } cursor-pointer hover:bg-gray-900`}
+                    data-option
                     onMouseEnter={() => handleMouseEnter(index)}
                     onClick={() => onSelect(option.command)}
                 >

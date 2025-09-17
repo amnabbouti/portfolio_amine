@@ -67,6 +67,7 @@ export function useTerminalKeyboard({
         e.preventDefault();
         onMenuEscape?.();
       } else if (e.key.length === 1) {
+        e.preventDefault();
         onStartTyping();
         onInputChange(currentInput + e.key);
       }

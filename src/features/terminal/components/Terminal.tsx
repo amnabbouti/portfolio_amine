@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTerminal } from '@/features/terminal/hooks';
 import { menuOptions } from '@/data';
 import { HackingSequence, TerminalOutput, TerminalInput, CommandMenu } from '.';
@@ -20,6 +21,7 @@ export function Terminal() {
     showCommandMenu,
     selectedMenuIndex,
     showMenuPrompt,
+    menuFilter,
     terminalContentRef,
     isDownloading,
     isHackingProgress,
@@ -28,6 +30,7 @@ export function Terminal() {
     setShowCommandMenu,
     setSelectedMenuIndex,
     setShowMenuPrompt,
+    setMenuFilter,
     handleCommand,
     handleInputChange,
     handleEnterCommand,
@@ -40,14 +43,28 @@ export function Terminal() {
     getLineColor,
   } = useTerminal();
 
+  const normalizedFilter = menuFilter.trim().toLowerCase();
+  const filteredMenuOptions = normalizedFilter
+    ? menuOptions.filter((option) =>
+        option.command.toLowerCase().startsWith(normalizedFilter),
+      )
+    : menuOptions;
+  const visibleMenuOptions =
+    filteredMenuOptions.length > 0 ? filteredMenuOptions : menuOptions;
+
   const handleMenuNavigate = (direction: 'up' | 'down') => {
+    const optionsLength = visibleMenuOptions.length;
+    if (optionsLength === 0) {
+      return;
+    }
+
     if (direction === 'up') {
       setSelectedMenuIndex((prev) =>
-        prev === 0 ? menuOptions.length - 1 : prev - 1,
+        prev === 0 ? optionsLength - 1 : prev - 1,
       );
     } else {
       setSelectedMenuIndex((prev) =>
-        prev === menuOptions.length - 1 ? 0 : prev + 1,
+        prev === optionsLength - 1 ? 0 : prev + 1,
       );
     }
   };
@@ -60,12 +77,14 @@ export function Terminal() {
   const handleMenuEscape = () => {
     setShowCommandMenu(false);
     setShowMenuPrompt(true);
+    setMenuFilter('');
   };
 
   const handleShowMenu = () => {
     setShowMenuPrompt(false);
     setShowCommandMenu(true);
     setSelectedMenuIndex(0);
+    setMenuFilter('');
     setTimeout(() => {
       if (terminalContentRef.current) {
         terminalContentRef.current.scrollTop =
@@ -77,7 +96,27 @@ export function Terminal() {
   const handleStartTyping = () => {
     setShowCommandMenu(false);
     setShowMenuPrompt(false);
+    setMenuFilter('');
   };
+
+  useEffect(() => {
+    if (!showCommandMenu) {
+      return;
+    }
+
+    if (visibleMenuOptions.length === 0) {
+      setSelectedMenuIndex(0);
+      return;
+    }
+
+    if (selectedMenuIndex >= visibleMenuOptions.length) {
+      setSelectedMenuIndex(visibleMenuOptions.length - 1);
+    }
+  }, [showCommandMenu, visibleMenuOptions.length, selectedMenuIndex, setSelectedMenuIndex]);
+
+  const safeSelectedIndex = visibleMenuOptions.length === 0
+    ? 0
+    : Math.min(selectedMenuIndex, visibleMenuOptions.length - 1);
 
   return (
     <div className="h-full bg-black text-white font-mono p-4 sm:p-6 md:p-8 text-sm sm:text-base overflow-hidden">
@@ -121,7 +160,8 @@ export function Terminal() {
                   onAutocomplete={handleAutocomplete}
                   onMenuSelect={() => {
                     const selectedCommand =
-                      menuOptions[selectedMenuIndex].command;
+                      visibleMenuOptions[safeSelectedIndex]?.command ??
+                      menuOptions[0].command;
                     handleMenuSelect(selectedCommand);
                   }}
                   onMenuEscape={handleMenuEscape}
@@ -132,10 +172,11 @@ export function Terminal() {
 
           {showCommandMenu || commandHistory.some((cmd) => cmd.showMenu) ? (
             <CommandMenu
-              selectedIndex={selectedMenuIndex}
+              selectedIndex={safeSelectedIndex}
               onSelect={handleMenuSelect}
               onEscape={handleMenuEscape}
               onNavigate={handleMenuNavigate}
+              options={visibleMenuOptions}
             />
           ) : null}
         </div>

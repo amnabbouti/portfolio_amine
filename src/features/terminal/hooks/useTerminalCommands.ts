@@ -1,6 +1,6 @@
 import type {Command} from '@/types';
 import type {CommandHandlers} from '@/types/terminalTypes';
-import {commands, menuOptions} from '@/data';
+import {commands, menuOptions, caseStudies} from '@/data';
 
 const availableCommands = Array.from(
   new Set([
@@ -35,8 +35,12 @@ export function useTerminalCommands(
   /**
    * Handle special commands like resume, hack, clear
    */
-  const handleSpecialCommand = (cmd: string, trimmedCmd: string): boolean => {
-    if (trimmedCmd === 'resume') {
+  const handleSpecialCommand = (
+    cmd: string,
+    baseCommand: string,
+    args: string[],
+  ): boolean => {
+    if (baseCommand === 'resume' && args.length === 0) {
       setCommandHistory((prev) => [
         ...prev,
         {
@@ -49,14 +53,14 @@ export function useTerminalCommands(
       return true;
     }
 
-    if (trimmedCmd === 'hack') {
+    if (baseCommand === 'hack' && args.length === 0) {
       setIsHackingSequence(true);
       setHackingLines([]);
       setCommandHistory([]);
       return true;
     }
 
-    if (trimmedCmd === 'clear') {
+    if (baseCommand === 'clear' && args.length === 0) {
       setCommandHistory([
         {
           command: '',
@@ -69,6 +73,112 @@ export function useTerminalCommands(
       setSelectedMenuIndex(0);
       setMenuFilter('');
       setTimeout(scrollToBottom, 50);
+      return true;
+    }
+
+    if (baseCommand === 'case-study') {
+      const slug = args.join(' ');
+
+      if (slug === '') {
+        const summaryLines = caseStudies.flatMap((study) => [
+          `  - ${study.slug} — ${study.summary}`,
+        ]);
+
+        setCommandHistory((prev) => [
+          ...prev,
+          {
+            command: cmd,
+            output: [
+              'Available case studies:',
+              ...summaryLines,
+              '',
+              'Usage: case-study <slug>',
+              '',
+            ],
+            isError: false,
+          },
+        ]);
+
+        setTimeout(() => {
+          setShowMenuPrompt(true);
+        }, 100);
+        setTimeout(scrollToBottom, 100);
+        return true;
+      }
+
+      const match = caseStudies.find(
+        (study) => study.slug.toLowerCase() === slug.toLowerCase(),
+      );
+
+      if (!match) {
+        setCommandHistory((prev) => [
+          ...prev,
+          {
+            command: cmd,
+            output: [
+              `No case study found for "${slug}".`,
+              'Available slugs:',
+              ...caseStudies.map((study) => `  - ${study.slug}`),
+              '',
+            ],
+            isError: true,
+          },
+        ]);
+
+        setTimeout(() => {
+          setShowMenuPrompt(true);
+        }, 100);
+        setTimeout(scrollToBottom, 100);
+        return true;
+      }
+
+      const headerLineParts = [match.title];
+      if (match.timeframe) {
+        headerLineParts.push(`(${match.timeframe})`);
+      }
+      headerLineParts.push(`— ${match.role}`);
+
+      const outputLines = [
+        headerLineParts.join(' '),
+        '',
+        `Context: ${match.context}`,
+        '',
+        'Challenge:',
+        ...match.challenge.map((item) => `  • ${item}`),
+        '',
+        'Solution:',
+        ...match.solution.map((item) => `  • ${item}`),
+        '',
+        'Impact:',
+        ...match.impact.map((item) => `  • ${item}`),
+        '',
+        `Stack: ${match.stack.join(', ')}`,
+      ];
+
+      if (match.links && match.links.length > 0) {
+        outputLines.push('');
+        outputLines.push('Artifacts:');
+        outputLines.push(
+          ...match.links.map((link) => `  • ${link.label}: ${link.url}`),
+        );
+      }
+
+      outputLines.push('');
+
+      setCommandHistory((prev) => [
+        ...prev,
+        {
+          command: cmd,
+          output: outputLines,
+          isError: false,
+        },
+      ]);
+
+      setTimeout(() => {
+        setShowMenuPrompt(true);
+      }, 100);
+      setTimeout(scrollToBottom, 100);
+
       return true;
     }
 
@@ -144,8 +254,11 @@ export function useTerminalCommands(
    * Main command handler
    */
   const handleCommand = (cmd: string, clearMenuEntries: boolean = false) => {
-    const trimmedCmd = cmd.trim().toLowerCase();
-    if (trimmedCmd === '') return;
+    const normalizedCommand = cmd.trim();
+    if (normalizedCommand === '') return;
+
+    const lowerCaseCommand = normalizedCommand.toLowerCase();
+    const [baseCommand, ...args] = lowerCaseCommand.split(/\s+/);
 
     // Reset UI state
     setShowCommandMenu(false);
@@ -157,11 +270,11 @@ export function useTerminalCommands(
     }
 
     // Handle special commands first
-    if (handleSpecialCommand(cmd, trimmedCmd)) {
+    if (handleSpecialCommand(cmd, baseCommand, args)) {
       return;
     }
 
-    const command = commands[trimmedCmd];
+    const command = commands[lowerCaseCommand];
 
     if (command) {
       // Handle system commands with special output values

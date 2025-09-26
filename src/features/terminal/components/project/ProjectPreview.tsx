@@ -89,45 +89,46 @@ export function ProjectPreview({ preview }: ProjectPreviewProps) {
   return (
     <>
       <div className="space-y-4">
+        {/* Interaction Help */}
+        <div className="text-xs text-green-400/60 font-mono text-center">
+          CLICK ANY IMAGE TO VIEW FULLSCREEN
+        </div>
+
         {/* Multiple Images Container */}
         <div className="space-y-3">
           {preview.images.map((image, index) => (
-            <div key={index} className="relative border border-green-500/20 bg-black/40">
-              {/* Image */}
-              <div className="relative overflow-hidden">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className={`w-full h-auto transition-all duration-300 cursor-pointer hover:brightness-110
-                    ${loadedImages.has(index) ? 'opacity-100' : 'opacity-0'}
-                  `}
-                  onLoad={() => handleImageLoad(index)}
-                  onClick={() => openFullscreen(index)}
-                  style={{
-                    filter: 'brightness(0.95) contrast(1.1) saturate(1.05) drop-shadow(0 0 10px rgba(34, 197, 94, 0.3))',
-                  }}
-                />
+            <div key={index} className="relative border border-green-500/20 bg-black/40 overflow-hidden">
+              <img
+                src={image.src}
+                alt={image.alt}
+                className={`w-full transition-all duration-300 cursor-pointer hover:brightness-110
+                  ${loadedImages.has(index) ? 'opacity-100' : 'opacity-0'}
+                `}
+                onLoad={() => handleImageLoad(index)}
+                onClick={() => openFullscreen(index)}
+                style={{
+                  filter: 'brightness(0.95) contrast(1.1) saturate(1.05) drop-shadow(0 0 10px rgba(34, 197, 94, 0.3))',
+                  display: 'block',
+                  verticalAlign: 'top',
+                  margin: 0,
+                  padding: 0,
+                }}
+              />
 
-                {/* Loading State */}
-                {!loadedImages.has(index) && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/60">
-                    <div className="flex items-center space-x-2 text-green-400 text-sm font-mono">
-                      <div className="w-4 h-4 border-2 border-green-400 border-t-transparent rounded-full animate-spin"></div>
-                      <span>LOADING...</span>
-                    </div>
+              {/* Loading State */}
+              {!loadedImages.has(index) && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/60">
+                  <div className="flex items-center space-x-2 text-green-400 text-sm font-mono">
+                    <div className="w-4 h-4 border-2 border-green-400 border-t-transparent rounded-full animate-spin"></div>
+                    <span>LOADING...</span>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Terminal Border Effects */}
               <div className="absolute inset-0 border border-green-500/30 pointer-events-none"></div>
             </div>
           ))}
-        </div>
-
-        {/* Interaction Help */}
-        <div className="text-xs text-green-400/60 font-mono text-center">
-          ▹ CLICK ANY IMAGE TO VIEW FULLSCREEN ▹
         </div>
       </div>
 

@@ -2,18 +2,18 @@ import type { CaseStudy } from '@/types';
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: 'missions-control',
-    title: 'Missions Control Field Operations Platform',
-    role: 'Lead Full Stack Developer',
-    timeframe: '2025',
+    slug: 'missions-control-api',
+    title: 'Missions Control - Inventory Management API',
+    role: 'Lead Backend Developer',
+    timeframe: '2024',
     summary:
-      'Capstone Laravel 11 REST API for a multi-tenant inventory & field-ops platform: zero-trust access, resilient mission workflows, hardware integrations, and enterprise-grade observability.',
+      'End-of-studies capstone project: Laravel 11 REST API for multi-tenant inventory management with zero-trust security, barcode integration, and enterprise-grade observability. Built to demonstrate advanced backend development skills.',
     context:
-      'Final-year study project in partnership with a multi-site logistics provider that had fragmented tools for dispatch, field execution, and compliance; leadership needed one mission-control stack that could pass enterprise security reviews.',
+      'Academic capstone project simulating real-world inventory management challenges for multi-tenant logistics operations. The project scenario involved building a modern API to replace fragmented legacy systems, demonstrating enterprise-level development practices.',
     challenge: [
-      'Inventory coordinators and field agents lacked a reliable source of truth for asset state and mission assignments, creating conflicting check-outs and SLA breaches.',
-      'The legacy API could not enforce tenant isolation, license-based entitlements, or auditable third-party integrations, blocking enterprise procurement deals.',
-      'Operations needed barcode/label printing, mission telemetry, and maintenance tracking that continued to function offline and reconciled cleanly once connectivity returned.',
+      'Design a multi-tenant architecture that could handle inventory coordination and field operations with proper data isolation and security.',
+      'Implement enterprise-grade security features including tenant isolation, license-based entitlements, and auditable third-party integrations.',
+      'Build robust offline-first workflows with barcode/label printing integration and conflict resolution mechanisms.',
     ],
     solution: [
       'Implemented a policy-enforcement middleware (PEP/PDP) with RBAC, ABAC, license entitlements, and Postgres row-level security; every request scopes org context before hitting repositories.',
@@ -24,12 +24,10 @@ export const caseStudies: CaseStudy[] = [
     stack: [
       'Laravel 11 (PHP 8.3)',
       'PostgreSQL 15 (Row-Level Security)',
-      'Redis',
       'Docker Compose',
       'Laravel Queues (database / Redis / SQS ready)',
       'Socket.IO / Websockets',
       'ZPL Printing (IPP/TCP)',
-      'Pint / Pest / ESLint',
     ],
     links: [
       {
@@ -41,15 +39,15 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: 'super-dashboard',
     title: 'StockMaster Dashboard - Mission Control Interface',
-    role: 'Lead Frontend Developer',
+    role: 'Frontend Engineer',
     timeframe: '2025',
-    summary: 'Enterprise management dashboard for the Missions Control API ecosystem featuring real-time monitoring, inventory management, and integrated security operations.',
+    summary: 'Administrative dashboard for the Missions Control Inventory API featuring real-time monitoring, API management, and integrated security operations - companion frontend for end-of-studies capstone project.',
     context:
-      'The Missions Control Field Operations Platform required a sophisticated administrative interface to manage the entire API ecosystem, including inventory operations, client relationships, user management, and real-time security monitoring.',
+      'Academic project to build a comprehensive administrative interface for the Missions Control Inventory API. The project required demonstrating advanced frontend development skills while creating a professional-grade dashboard for API ecosystem management.',
     challenge: [
-      'Operations teams needed a centralized command center to manage multiple aspects: API gateway monitoring, inventory tracking, client management, and user administration.',
-      'System administrators required real-time threat detection, security monitoring, and the ability to execute system commands directly from the interface.',
-      'The dashboard needed to handle complex data visualization, Excel exports, and integrate terminal functionality while maintaining enterprise-grade security.',
+      'Design a centralized admin interface to manage multiple API aspects: gateway monitoring, inventory tracking, client management, and user administration.',
+      'Implement real-time monitoring capabilities with threat detection, security dashboards, and direct system command execution through an integrated terminal.',
+      'Build complex data visualization features, Excel export functionality, and maintain enterprise-grade security standards throughout the interface.',
     ],
     solution: [
       'Developed StockMaster Dashboard using Next.js 15 and React 19 with a classic interface featuring an intelligent sidebar with auto-hide functionality and real-time system status.',
@@ -94,30 +92,50 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
-    slug: 'ecommerce-platform',
-    title: 'Composable E-Commerce Platform',
-    role: 'Full Stack Engineer',
-    timeframe: '2021',
-    summary: 'Headless commerce rebuild focused on conversion lift and maintainability.',
+    slug: 'poke-markt-webshop',
+    title: 'Poke Markt - E-Commerce Webshop',
+    role: 'Frontend Developer',
+    timeframe: '2024',
+    summary: 'Team project building a modern e-commerce webshop with React frontend and Node.js backend, developed in collaboration with 3 other students to demonstrate teamwork and full-stack development skills.',
     context:
-      'A retail brand outgrew its monolithic storefront and needed a faster funnel ahead of a seasonal launch.',
+      'Academic group project to build a complete e-commerce solution from scratch. Working with a team of 4 students, we developed "Poke Markt" - a modern webshop demonstrating collaborative development practices, version control workflows, and full-stack JavaScript development.',
     challenge: [
-      'Page load times exceeded three seconds on mid-tier devices, crushing mobile conversion.',
-      'Marketing could not iterate on landing pages without engineering, slowing campaign velocity.',
-      'The ops team wrestled with brittle order fulfillment integrations that failed under peak traffic.',
+      'Coordinate development across a 4-person team with different skill levels and schedules while maintaining code quality and consistency.',
+      'Build a responsive, user-friendly frontend with modern React patterns while ensuring seamless integration with the Node.js backend.',
+      'Implement essential e-commerce features including product catalog, shopping cart, user authentication, and payment processing within academic project constraints.',
     ],
     solution: [
-      'Replaced the legacy SPA with a React + Node.js stack using server-side rendering and aggressive asset splitting.',
-      'Embedded a visual CMS layer so copywriters could ship experiments without developer intervention.',
-      'Streamlined fulfillment by introducing event-driven webhooks between the storefront, ERP, and 3PL providers.',
+      'Developed a responsive React frontend with modern component architecture, focusing on user experience and mobile-first design principles.',
+      'Collaborated on Node.js backend API development while specializing in frontend implementation and React state management.',
+      'Implemented team workflows using Git collaboration, code reviews, and agile development practices to deliver a polished e-commerce experience.',
     ],
-    stack: ['React', 'Node.js', 'TypeScript', 'Tailwind CSS', 'MongoDB', 'Vercel', 'Stripe'],
+    stack: ['React', 'Node.js', 'TypeScript', 'CSS/SCSS', 'MongoDB', 'Vercel', 'Git'],
     links: [
       {
-        label: 'Storefront repo (selected modules)',
-        url: 'https://github.com/amnabbouti?tab=repositories',
+        label: 'Live Website',
+        url: 'https://poke-markt-webshop.vercel.app',
       },
     ],
+    preview: {
+      images: [
+        {
+          src: '/src/assets/images/pke_markt.png',
+          alt: 'Poke Markt - Homepage with product showcase and navigation',
+        },
+        {
+          src: '/src/assets/images/poke_markt2.png',
+          alt: 'Poke Markt - Product catalog and filtering system',
+        },
+        {
+          src: '/src/assets/images/poke_markt3.png',
+          alt: 'Poke Markt - Product detail page and cart functionality',
+        },
+        {
+          src: '/src/assets/images/poke_markt4.png',
+          alt: 'Poke Markt - Shopping cart and checkout process',
+        },
+      ],
+    },
   },
 ];
 

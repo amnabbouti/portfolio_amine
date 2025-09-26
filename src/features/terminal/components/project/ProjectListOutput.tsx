@@ -11,7 +11,7 @@ export function ProjectListOutput({ items, onSelect }: ProjectListOutputProps) {
   }
 
   return (
-    <div className="mt-2 space-y-2">
+    <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-3">
       {items.map(item => (
         <button
           key={item.slug}

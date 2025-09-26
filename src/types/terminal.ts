@@ -29,6 +29,13 @@ export interface CaseStudy {
   solution: string[];
   stack: string[];
   links?: Array<{ label: string; url: string }>;
+  preview?: {
+    images: Array<{
+      src: string;
+      alt: string;
+      caption?: string;
+    }>;
+  };
 }
 
 export interface SkillItemResult {

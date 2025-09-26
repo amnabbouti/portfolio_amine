@@ -72,6 +72,26 @@ export const caseStudies: CaseStudy[] = [
     links: [
       { label: 'Demo walkthrough', url: 'https://github.com/amnabbouti?tab=repositories' },
     ],
+    preview: {
+      images: [
+        {
+          src: '/src/assets/images/dashboard.png',
+          alt: 'StockMaster Dashboard - Command Center with real-time monitoring and integrated terminal',
+        },
+        {
+          src: '/src/assets/images/dashboard_2.png',
+          alt: 'StockMaster Dashboard - API Gateway management and security monitoring',
+        },
+        {
+          src: '/src/assets/images/dashboard_3.png',
+          alt: 'StockMaster Dashboard - Inventory Matrix with stock management and tracking',
+        },
+        {
+          src: '/src/assets/images/dashboard_4.png',
+          alt: 'StockMaster Dashboard - User management and access control interface',
+        },
+      ],
+    },
   },
   {
     slug: 'ecommerce-platform',

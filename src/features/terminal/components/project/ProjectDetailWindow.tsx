@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { CaseStudy } from '@/types';
+import { ProjectPreview } from './ProjectPreview';
 
 interface ProjectDetailWindowProps {
   study: CaseStudy;
@@ -74,24 +75,12 @@ export function ProjectDetailWindow({ study, onClose }: ProjectDetailWindowProps
               </div>
             </Section>
 
-            {study.links && study.links.length > 0 ? (
-              <Section title="Artifacts">
-                <ul className="space-y-2 text-sm text-cyan-300">
-                  {study.links.map(link => (
-                    <li key={link.url}>
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="hover:text-green-300 hover:underline"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+            {/* Interface Preview Section */}
+            {study.preview && (
+              <Section title="Interface Preview" accent>
+                <ProjectPreview preview={study.preview} />
               </Section>
-            ) : null}
+            )}
           </div>
         </div>
       </div>

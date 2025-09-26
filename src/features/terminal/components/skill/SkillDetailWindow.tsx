@@ -9,18 +9,18 @@ interface SkillDetailWindowProps {
 export function SkillDetailWindow({ category, onClose }: SkillDetailWindowProps) {
   return (
     <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/85 px-4 py-10 font-mono text-sm text-gray-100 backdrop-blur-sm">
-      <div className="relative w-full max-w-4xl max-h-full overflow-hidden border border-cyan-500/40 bg-gray-950 shadow-lg shadow-cyan-500/10">
-        <div className="flex items-center justify-between border-b border-cyan-500/30 bg-gray-900 px-4 py-3">
+      <div className="relative w-full max-w-4xl max-h-full overflow-hidden border border-green-500/50 bg-gray-950 shadow-lg shadow-green-500/10">
+        <div className="flex items-center justify-between border-b border-green-500/40 bg-gray-900 px-4 py-3">
           <div>
-            <div className="text-xs uppercase tracking-[0.35em] text-cyan-400/80">
-              skill dossier
+            <div className="text-xs uppercase tracking-[0.35em] text-green-400/80">
+              SKILL DOSSIER
             </div>
-            <div className="text-xl font-semibold text-cyan-200">{category.label}</div>
+            <div className="text-xl font-semibold text-green-200">{category.label}</div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="rounded border border-cyan-500/30 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cyan-200 transition-colors duration-150 hover:bg-cyan-500/10"
+            className="rounded border border-green-500/50 px-3 py-1 text-xs uppercase tracking-[0.2em] text-green-300 transition-colors duration-150 hover:bg-green-500/10"
           >
             CLOSE
           </button>
@@ -70,7 +70,7 @@ export function SkillDetailWindow({ category, onClose }: SkillDetailWindowProps)
                   {category.tools.map(tool => (
                     <span
                       key={tool}
-                      className="rounded border border-cyan-500/30 bg-cyan-500/5 px-2 py-1 text-xs uppercase tracking-[0.3em] text-cyan-200"
+                      className="rounded border border-green-500/30 bg-green-500/5 px-2 py-1 text-xs uppercase tracking-[0.3em] text-green-300"
                     >
                       {tool}
                     </span>
@@ -106,8 +106,8 @@ interface SectionProps {
 function Section({ title, children }: SectionProps) {
   return (
     <section>
-      <h3 className="text-xs uppercase tracking-[0.35em] text-cyan-400">{title}</h3>
-      <div className="mt-2 space-y-2 border-l border-cyan-500/20 pl-4">{children}</div>
+      <h3 className="text-xs uppercase tracking-[0.35em] text-green-400">{title}</h3>
+      <div className="mt-2 space-y-2 border-l border-green-500/20 pl-4">{children}</div>
     </section>
   );
 }

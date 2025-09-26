@@ -21,13 +21,13 @@ export function SkillListOutput({ items, onSelect }: SkillListOutputProps) {
           key={item.slug}
           type="button"
           onClick={() => onSelect(item.slug)}
-          className="h-full w-full text-left rounded border border-gray-700/70 bg-gray-900/40 px-4 py-3 font-mono text-sm text-gray-200 transition-colors duration-150 hover:border-cyan-500/60 hover:bg-gray-900/70"
+          className="h-full w-full text-left group rounded border border-gray-700/60 bg-gray-900/40 px-4 py-3 font-mono text-sm text-gray-200 transition-colors duration-150 hover:bg-gray-900/70"
         >
-          <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-cyan-400/80">
+          <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-500">
             <span>{item.label}</span>
-            <span className="text-green-300">OPEN &gt;</span>
+            <span className="text-cyan-400 group-hover:text-green-400">OPEN &gt;</span>
           </div>
-          <div className="mt-3 text-sm text-gray-300">{item.teaser}</div>
+          <div className="mt-3 text-lg font-semibold text-green-300 group-hover:text-green-200">{item.teaser}</div>
           <div className="mt-3 text-xs text-gray-400">stack &gt;</div>
           <ul className="mt-1 space-y-1 text-xs text-gray-300">
             {item.primaryTools.map(tool => (

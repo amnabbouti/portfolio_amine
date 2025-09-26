@@ -75,13 +75,6 @@ export function ProjectDetailWindow({ study, onClose }: ProjectDetailWindowProps
               </div>
             </Section>
 
-            {/* Interface Preview Section */}
-            {study.preview && (
-              <Section title="Interface Preview" accent>
-                <ProjectPreview preview={study.preview} />
-              </Section>
-            )}
-
             {/* Links Section */}
             {study.links && study.links.length > 0 && (
               <Section title="Links" accent>
@@ -99,6 +92,13 @@ export function ProjectDetailWindow({ study, onClose }: ProjectDetailWindowProps
                     </li>
                   ))}
                 </ul>
+              </Section>
+            )}
+
+            {/* Interface Preview Section */}
+            {study.preview && (
+              <Section title="Interface Preview" accent>
+                <ProjectPreview preview={study.preview} />
               </Section>
             )}
           </div>

@@ -141,6 +141,62 @@ export const caseStudies: CaseStudy[] = [
       ],
     },
   },
+  {
+    slug: 'planets-explorer',
+    title: 'Planets Explorer - 3D Exoplanet Database',
+    role: 'Lead Developer',
+    timeframe: '2024',
+    summary: 'First academic project: Interactive exoplanet exploration website with 3D planet models, NASA API integration, and comprehensive user management system. Led a team of 3 students in building a full-stack web application.',
+    context:
+      'Initial group project undertaken as lead developer with 2 other students. The goal was to create an engaging educational platform for exploring exoplanets and space science, demonstrating both technical skills and team leadership capabilities.',
+    challenge: [
+      'Lead and coordinate development across a 3-person team as the primary developer while learning collaborative coding practices.',
+      'Implement interactive 3D planet visualization using modern web technologies to make space science accessible and engaging.',
+      'Build a complete full-stack application with user authentication, database management, and external API integration from scratch.',
+    ],
+    solution: [
+      'Developed a comprehensive planets database using PHP/MySQL with user authentication, admin panel, and interactive features like planet liking and filtering.',
+      'Implemented 3D planet models using Google\'s model-viewer web component with auto-rotation and camera controls for immersive exploration.',
+      'Integrated NASA API for featured space content and built responsive frontend with Vite build system and custom CSS styling.',
+      'Created user management system with registration, login, profiles, and admin controls for managing both users and planet data.',
+    ],
+    stack: [
+      'PHP',
+      'MySQL',
+      'Vite',
+      'Vanilla JavaScript',
+      'CSS3',
+      'Google Model Viewer',
+      'NASA API',
+      'PDO',
+    ],
+    links: [
+      {
+        label: 'Project Repository',
+        url: 'https://github.com/amnabbouti/Group_HAK',
+      },
+    ],
+    preview: {
+      images: [
+        {
+          src: '/src/assets/images/millers_world.png',
+          alt: 'Planets Explorer - Main dashboard with 3D planet models and catalog',
+        },
+        {
+          src: '/src/assets/images/millers_world2.png',
+          alt: 'Planets Explorer - Detailed planet view with interactive 3D model',
+        },
+        {
+          src: '/src/assets/images/millers_world3.png',
+          alt: 'Planets Explorer - Detailed planet view with interactive 3D model',
+        },
+        {
+          src: '/src/assets/images/millers_world4.png',
+          alt: 'Planets Explorer - Detailed planet view with interactive 3D model',
+        },
+      ],
+    },
+  },
 ];
 
 export default caseStudies;

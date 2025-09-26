@@ -27,7 +27,6 @@ export interface CaseStudy {
   context: string;
   challenge: string[];
   solution: string[];
-  impact: string[];
   stack: string[];
   links?: Array<{ label: string; url: string }>;
 }

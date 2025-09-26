@@ -171,9 +171,6 @@ export function useTerminalCommands(
         'Solution:',
         ...match.solution.map(item => `  • ${item}`),
         '',
-        'Impact:',
-        ...match.impact.map(item => `  • ${item}`),
-        '',
         `Stack: ${match.stack.join(', ')}`,
       ];
 

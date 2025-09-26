@@ -80,7 +80,7 @@ export const commands: Record<string, { output: string[] | string }> = {
       'Email: amine.abbouti@hotmail.com',
       'LinkedIn: linkedin.com/in/amine-abbouti',
       'GitHub: github.com/amnabbouti',
-      'Twitter: @amine_abbouti',
+      'X: @amine_abbouti',
       '',
       'Feel free to reach out!',
       '',

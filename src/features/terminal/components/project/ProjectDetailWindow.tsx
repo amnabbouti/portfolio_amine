@@ -45,10 +45,6 @@ export function ProjectDetailWindow({ study, onClose }: ProjectDetailWindowProps
             <Section title="Solution" accent>
               <BulletList items={study.solution} />
             </Section>
-
-            <Section title="Impact" accent>
-              <BulletList items={study.impact} emphasis />
-            </Section>
           </div>
 
           <div className="space-y-6">

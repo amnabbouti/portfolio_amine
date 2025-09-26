@@ -4,7 +4,7 @@ export const skillCategories: SkillCategory[] = [
   {
     slug: 'backend-platform',
     label: 'Backend & Platform',
-    tagline: 'Laravel-first APIs with multi-tenant hardening',
+    tagline: 'I design APIs with multi-tenant hardening and powerful security',
     narrative:
       'I design REST APIs with layered authorization (RBAC/ABAC), tenant isolation, observability, and automated recovery.',
     stack: [
@@ -27,7 +27,6 @@ export const skillCategories: SkillCategory[] = [
         focus: 'Supporting',
         summary: 'Auth gateways, TypeScript-first developer tooling.',
         lastUsed: '2025',
-        highlights: ['Hybrid REST/WebSocket services', 'Queue-backed integration bridges'],
       },
       {
         name: 'FastAPI (Python)',
@@ -44,18 +43,11 @@ export const skillCategories: SkillCategory[] = [
         lastUsed: 'Current',
       },
       {
-        name: 'Redis / Queues',
-        level: 'Intermediate',
-        focus: 'Supporting',
-        summary: 'Rate limiting, cache stampede protection, queued workers w/ replay resilience.',
-        lastUsed: 'Current',
-      },
-      {
         name: 'Docker & CI pipelines',
         level: 'Intermediate',
-        focus: 'Primary',
-        summary: 'Local parity, Pest/Pint automation, GitHub Actions hardening & secret scanning.',
-        lastUsed: 'Current',
+        focus: 'Supporting',
+        summary: 'Used Docker for deploying apps to Google Cloud during studies, local development parity.',
+        lastUsed: '2025',
       },
     ],
     tools: [
@@ -70,15 +62,12 @@ export const skillCategories: SkillCategory[] = [
     ],
     proofPoints: [
       'Missions Control API ranked 100% on security review; zero critical findings from jury',
-      'Designed multi-tenant license gating & threat detection scoring service',
       'Rbac/Abac policies',
       'CLI tooling',
       'Automated onboarding & offboarding scripts',
       'Database migration utilities',
       'PostgreSQL RLS',
-      'Audit trails',
       'Event sourcing',
-      'Job orchestration',
       'Webhooks',
     ],
   },
@@ -94,7 +83,7 @@ export const skillCategories: SkillCategory[] = [
         level: 'Advanced',
         focus: 'Primary',
         summary:
-          'Cross-platform field apps with offline sync, background geolocation, and native integrations.',
+          'Cross-platform apps with native integrations.',
         lastUsed: '2025',
       },
       {

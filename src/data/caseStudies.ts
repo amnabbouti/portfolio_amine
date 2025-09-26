@@ -7,19 +7,19 @@ export const caseStudies: CaseStudy[] = [
     role: 'Lead Backend Developer',
     timeframe: '2024',
     summary:
-      'End-of-studies capstone project: Laravel 11 REST API for multi-tenant inventory management with zero-trust security, barcode integration, and enterprise-grade observability. Built to demonstrate advanced backend development skills.',
+      'End-of-studies capstone project: Laravel 11 REST API for multi-tenant inventory management with security features, barcode integration, and system monitoring. Built to demonstrate backend development skills.',
     context:
-      'Academic capstone project simulating real-world inventory management challenges for multi-tenant logistics operations. The project scenario involved building a modern API to replace fragmented legacy systems, demonstrating enterprise-level development practices.',
+      'Academic capstone project simulating real-world inventory management challenges for multi-tenant logistics operations. The project involved building a modern API to replace fragmented legacy systems, demonstrating backend development practices.',
     challenge: [
       'Design a multi-tenant architecture that could handle inventory coordination and field operations with proper data isolation and security.',
-      'Implement enterprise-grade security features including tenant isolation, license-based entitlements, and auditable third-party integrations.',
-      'Build robust offline-first workflows with barcode/label printing integration and conflict resolution mechanisms.',
+      'Implement security features including tenant isolation, license-based entitlements, and auditable third-party integrations.',
+      'Build offline-first workflows with barcode/label printing integration and conflict resolution mechanisms.',
     ],
     solution: [
-      'Implemented a policy-enforcement middleware (PEP/PDP) with RBAC, ABAC, license entitlements, and Postgres row-level security; every request scopes org context before hitting repositories.',
-      'Published a versioned REST surface (120+ endpoints) covering items, check-ins/out, maintenance, asset history, and printed artifacts; websocket feeds stream mission and inventory events while queued workers absorb spikes.',
-      'Delivered hardened API access with rotating keys, IP allow lists, custom rate limits, anomaly scoring (ThreatDetectionService), and signed webhook callbacks for downstream ERPs.',
-      'Integrated barcode/label printing over ZPL, IPP, and TCP 9100, plus mission templates and license-aware feature toggles that ops can deploy without engineering intervention.',
+      'Built secure multi-tenant architecture with role-based access control, user permissions, and PostgreSQL row-level security to ensure proper data isolation between organizations.',
+      'Developed comprehensive REST API with 120+ endpoints covering inventory items, check-ins/outs, maintenance, and asset history, with real-time websocket feeds for live updates.',
+      'Implemented API security with authentication tokens, IP restrictions, rate limiting, and webhook integration for external system communication.',
+      'Added barcode and label printing functionality with support for different printer protocols, plus configurable templates and feature toggles for operational flexibility.',
     ],
     stack: [
       'Laravel 11 (PHP 8.3)',
@@ -43,17 +43,17 @@ export const caseStudies: CaseStudy[] = [
     timeframe: '2025',
     summary: 'Administrative dashboard for the Missions Control Inventory API featuring real-time monitoring, API management, and integrated security operations - companion frontend for end-of-studies capstone project.',
     context:
-      'Academic project to build a comprehensive administrative interface for the Missions Control Inventory API. The project required demonstrating advanced frontend development skills while creating a professional-grade dashboard for API ecosystem management.',
+      'Academic project to build a comprehensive administrative interface for the Missions Control Inventory API. The project required demonstrating frontend development skills while creating a dashboard for API ecosystem management.',
     challenge: [
       'Design a centralized admin interface to manage multiple API aspects: gateway monitoring, inventory tracking, client management, and user administration.',
       'Implement real-time monitoring capabilities with threat detection, security dashboards, and direct system command execution through an integrated terminal.',
-      'Build complex data visualization features, Excel export functionality, and maintain enterprise-grade security standards throughout the interface.',
+      'Build data visualization features, Excel export functionality, and maintain security standards throughout the interface.',
     ],
     solution: [
-      'Developed StockMaster Dashboard using Next.js 15 and React 19 with a classic interface featuring an intelligent sidebar with auto-hide functionality and real-time system status.',
-      'Integrated xterm.js terminal emulation with custom security commands, threat level monitoring, and direct API interaction, providing administrators with comprehensive system control.',
-      'Implemented modular architecture with dedicated sections: Command Center (real-time monitoring), API Gateway (security & metrics), Inventory Matrix (stock management with Excel export), Client Hub (CRM), User Hub (RBAC), and Analytics Engine.',
-      'Built sophisticated API integration with intelligent caching, bearer token authentication, and real-time threat detection monitoring with color-coded security status displays.',
+      'Developed StockMaster Dashboard using Next.js 15 and React 19 with a clean interface featuring a sidebar with auto-hide functionality and real-time system status.',
+      'Integrated xterm.js terminal component with custom commands and direct API interaction, providing administrators with system management capabilities.',
+      'Built modular architecture with dedicated sections: Command Center (monitoring), API Gateway (metrics), Inventory Matrix (stock management with Excel export), Client Hub, User Hub, and Analytics dashboard.',
+      'Created API integration with caching, token authentication, and real-time monitoring with color-coded status displays.',
     ],
     stack: [
       'Next.js 15',
@@ -90,6 +90,39 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
     },
+  },
+    {
+    slug: 'missions-control-mobile',
+    title: 'Missions Control - Cross-Platform Mobile App',
+    role: 'Mobile Developer',
+    timeframe: '2024',
+    summary:
+      'React Native Expo application for the Missions Control inventory system, providing cross-platform field operations with barcode scanning, real-time inventory tracking, and offline-first functionality. Mobile companion to the Laravel API backend.',
+    context:
+      'Academic project to build a mobile interface for field workers using the Missions Control API. The app needed to work seamlessly across iOS, Android, and web platforms while providing essential inventory management features for on-site operations.',
+    challenge: [
+      'Design cross-platform mobile interface that works consistently on iOS, Android, and web while maintaining native performance and user experience.',
+      'Implement barcode scanning functionality with camera integration for quick item identification and inventory operations in field environments.',
+      'Build offline-first architecture with data synchronization to ensure field workers can operate without reliable internet connectivity.',
+    ],
+    solution: [
+      'Developed React Native Expo application with shared monorepo architecture, utilizing TypeScript and modern React patterns for consistent cross-platform development.',
+      'Integrated expo-barcode-scanner and expo-camera for native barcode/QR code scanning with real-time item lookup and inventory management features.',
+      'Implemented Zustand state management with API client abstraction connecting to the Laravel backend, ensuring seamless data flow between mobile and server.',
+      'Created responsive UI components using React Native Paper and custom design system, with navigation via Expo Router for smooth user experience across platforms.',
+    ],
+    stack: [
+      'React Native',
+      'Expo SDK 54',
+      'TypeScript',
+      'React 19',
+      'Zustand',
+      'Expo Router',
+      'React Native Paper',
+      'Expo Camera',
+      'Expo Barcode Scanner',
+      'AsyncStorage',
+    ],
   },
   {
     slug: 'poke-markt-webshop',

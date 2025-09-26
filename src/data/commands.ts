@@ -96,7 +96,7 @@ export const commands: Record<string, { output: string[] | string }> = {
       '• I stay updated with latest tech trends',
       '• I deliver projects on time and within budget',
       '',
-      "Let's build something amazing together!",
+      "Let's build something great together!",
       '',
     ],
   },

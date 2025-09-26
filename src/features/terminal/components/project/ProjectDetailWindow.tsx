@@ -81,6 +81,26 @@ export function ProjectDetailWindow({ study, onClose }: ProjectDetailWindowProps
                 <ProjectPreview preview={study.preview} />
               </Section>
             )}
+
+            {/* Links Section */}
+            {study.links && study.links.length > 0 && (
+              <Section title="Links" accent>
+                <ul className="space-y-2 text-sm text-cyan-300">
+                  {study.links.map(link => (
+                    <li key={link.url}>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="hover:text-green-300 hover:underline"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Section>
+            )}
           </div>
         </div>
       </div>

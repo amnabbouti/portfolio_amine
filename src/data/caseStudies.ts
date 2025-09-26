@@ -95,7 +95,7 @@ export const caseStudies: CaseStudy[] = [
     slug: 'poke-markt-webshop',
     title: 'Poke Markt - E-Commerce Webshop',
     role: 'Frontend Developer',
-    timeframe: '2024',
+    timeframe: '2025',
     summary: 'Team project building a modern e-commerce webshop with React frontend and Node.js backend, developed in collaboration with 3 other students to demonstrate teamwork and full-stack development skills.',
     context:
       'Academic group project to build a complete e-commerce solution from scratch. Working with a team of 4 students, we developed "Poke Markt" - a modern webshop demonstrating collaborative development practices, version control workflows, and full-stack JavaScript development.',
@@ -114,6 +114,10 @@ export const caseStudies: CaseStudy[] = [
       {
         label: 'Live Website',
         url: 'https://poke-markt-webshop.vercel.app',
+      },
+      {
+        label: 'GitHub Repositories',
+        url: 'https://github.com/orgs/Poke-market/repositories',
       },
     ],
     preview: {

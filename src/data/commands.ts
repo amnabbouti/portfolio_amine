@@ -43,11 +43,11 @@ export const commands: Record<string, { output: string[] | string }> = {
   whoami: {
     output: [
       'AMINE_ABBOUTI or you can call me AMINE [without the "e" for flemish people]',
-      'Im Supposed to be a full stack developer',
-      'Specializing in: software development using React, React Native, Node.js, laravel and more.',
+      'Full stack developer',
+      'Specializing in: software development using React, React Native, Node.js, laravel.',
+      'currently self-learning FastAPI to expand my backend toolkit.',
       'I Speak: Dutch, English, French, Amazigh and Arabic',
       'quirky fact: during my last exam i coded for 40h 27min 51sec straight without sleep.',
-      'another quirky fact: i have read so many books that one time my closet broke under the weight.',
       'Status: Available for work',
       'Location: All over Belgium and the Netherlands',
       '',
@@ -79,7 +79,7 @@ export const commands: Record<string, { output: string[] | string }> = {
       'Contact Information:',
       'Email: amine.abbouti@hotmail.com',
       'LinkedIn: linkedin.com/in/amine-abbouti',
-      'GitHub: github.com/amine-abbouti',
+      'GitHub: github.com/amnabbouti',
       'Twitter: @amine_abbouti',
       '',
       'Feel free to reach out!',

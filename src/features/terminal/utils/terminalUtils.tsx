@@ -44,18 +44,18 @@ export const makeContactClickable = (line: string): React.ReactNode => {
       </>
     );
   }
-  if (line.startsWith('Twitter:')) {
-    const twitter = line.split(':')[1].trim();
+  if (line.startsWith('X:')) {
+    const X = line.split(':')[1].trim();
     return (
       <>
-        Twitter:{' '}
+        X:{' '}
         <a
-          href={`https://twitter.com/${twitter.replace('@', '')}`}
+          href={`https://X.com/${X.replace('@', '')}`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-400 hover:underline"
         >
-          {twitter}
+          {X}
         </a>
       </>
     );

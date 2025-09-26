@@ -27,12 +27,14 @@ dist-ssr
 .cache/
 coverage/
 .nyc_output/
+.claude/
 Thumbs.db
 *.pid
 *.seed
 *.tgz
 *.orig
 AGENTS.md
+CLAUDE.md
 /docs/*
 docs/STRUCTURE_TODO.md
 

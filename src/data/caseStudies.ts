@@ -40,7 +40,7 @@ export const caseStudies: CaseStudy[] = [
     links: [
       {
         label: 'Authorization framework deep dive',
-        url: 'https://github.com/amine-abbouti?tab=repositories',
+        url: 'https://github.com/amnabbouti?tab=repositories',
       },
     ],
   },
@@ -77,7 +77,7 @@ export const caseStudies: CaseStudy[] = [
       'OpenTelemetry',
     ],
     links: [
-      { label: 'Demo walkthrough', url: 'https://github.com/amine-abbouti?tab=repositories' },
+      { label: 'Demo walkthrough', url: 'https://github.com/amnabbouti?tab=repositories' },
     ],
   },
   {
@@ -107,7 +107,7 @@ export const caseStudies: CaseStudy[] = [
     links: [
       {
         label: 'Storefront repo (selected modules)',
-        url: 'https://github.com/amine-abbouti?tab=repositories',
+        url: 'https://github.com/amnabbouti?tab=repositories',
       },
     ],
   },

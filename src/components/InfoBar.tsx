@@ -14,12 +14,12 @@ export function InfoBar() {
       <div>
         <span className="text-cyan-400">GITHUB&nbsp;&nbsp;:</span>{' '}
         <a
-          href="https://github.com/amine-abbouti"
+          href="https://github.com/amnabbouti"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-400 hover:text-blue-300 underline"
         >
-          github.com/amine-abbouti
+          github.com/amnabbouti
         </a>
       </div>
       <div>
@@ -34,7 +34,7 @@ export function InfoBar() {
         </a>
       </div>
       <div>
-        <span className="text-cyan-400">TWITTER&nbsp;:</span>{' '}
+        <span className="text-cyan-400">X&nbsp;:</span>{' '}
         <a
           href="https://x.com/amine_abbouti"
           target="_blank"

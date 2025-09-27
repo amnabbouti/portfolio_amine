@@ -1,11 +1,7 @@
+import MainPage from './pages/MainPage';
+
 function App() {
-  return (
-    <div>
-      <header>
-        <h1>Welcome to My React App</h1>
-      </header>
-    </div>
-  );
+  return <MainPage />;
 }
 
 export default App;

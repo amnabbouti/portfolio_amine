@@ -11,15 +11,7 @@ export function ShutdownSequence({ onComplete }: ShutdownSequenceProps) {
   const [progress, setProgress] = useState(0);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
 
-  const shutdownSequence = [
-    'Initiating system shutdown...',
-    'Closing active connections...',
-    'Terminating background processes...',
-    'Clearing memory buffers...',
-    'Disconnecting from network...',
-    'Saving session data...',
-    'Preparing for shutdown...',
-  ];
+  const shutdownSequence = ['Thanks for exploring. You know exactly what you need.'];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -61,11 +53,9 @@ export function ShutdownSequence({ onComplete }: ShutdownSequenceProps) {
   }, [showProgress]);
 
   const handleShutdownComplete = () => {
-    setShutdownLines(prev => [...prev, 'System shutdown complete.', 'Goodbye.']);
-
     setTimeout(() => {
       closeTab();
-    }, 1000);
+    }, 500);
 
     if (onComplete) {
       onComplete();
@@ -82,17 +72,14 @@ export function ShutdownSequence({ onComplete }: ShutdownSequenceProps) {
 
   return (
     <div className="mt-4">
-      <div className="text-red-400 font-bold mb-2">🔴 SYSTEM SHUTDOWN INITIATED</div>
-
       {shutdownLines.map((line, index) => (
         <div key={index} className="text-red-300 mb-1">
-          <span className="text-red-500">[SHUTDOWN]</span> {line}
+          {line}
         </div>
       ))}
 
       {showProgress && (
         <div className="mt-3">
-          <div className="text-red-400 mb-2">Shutting down system...</div>
           <div className="font-mono text-red-300">{renderProgressBar()}</div>
         </div>
       )}

@@ -5,7 +5,7 @@ export const caseStudies: CaseStudy[] = [
     slug: 'missions-control-api',
     title: 'Missions Control - Inventory Management API',
     role: 'Lead Backend Developer',
-    timeframe: '2024',
+    timeframe: '2025',
     summary:
       'End-of-studies capstone project: Laravel 11 REST API for multi-tenant inventory management with security features, barcode integration, and system monitoring. Built to demonstrate backend development skills.',
     context:
@@ -29,19 +29,14 @@ export const caseStudies: CaseStudy[] = [
       'Socket.IO / Websockets',
       'ZPL Printing (IPP/TCP)',
     ],
-    links: [
-      {
-        label: 'Authorization framework deep dive',
-        url: 'https://github.com/amnabbouti?tab=repositories',
-      },
-    ],
   },
   {
     slug: 'super-dashboard',
-    title: 'StockMaster Dashboard - Mission Control Interface',
+    title: 'Admin Dashboard - Mission Control Interface',
     role: 'Frontend Engineer',
     timeframe: '2025',
-    summary: 'Administrative dashboard for the Missions Control Inventory API featuring real-time monitoring, API management, and integrated security operations - companion frontend for end-of-studies capstone project.',
+    summary:
+      'Administrative dashboard for the Missions Control Inventory API featuring real-time monitoring, API management, and integrated security operations - companion frontend for end-of-studies capstone project.',
     context:
       'Academic project to build a comprehensive administrative interface for the Missions Control Inventory API. The project required demonstrating frontend development skills while creating a dashboard for API ecosystem management.',
     challenge: [
@@ -50,7 +45,7 @@ export const caseStudies: CaseStudy[] = [
       'Build data visualization features, Excel export functionality, and maintain security standards throughout the interface.',
     ],
     solution: [
-      'Developed StockMaster Dashboard using Next.js 15 and React 19 with a clean interface featuring a sidebar with auto-hide functionality and real-time system status.',
+      'Developed Admin Dashboard using Next.js 15 and React 19 with a clean interface featuring a sidebar with auto-hide functionality and real-time system status.',
       'Integrated xterm.js terminal component with custom commands and direct API interaction, providing administrators with system management capabilities.',
       'Built modular architecture with dedicated sections: Command Center (monitoring), API Gateway (metrics), Inventory Matrix (stock management with Excel export), Client Hub, User Hub, and Analytics dashboard.',
       'Created API integration with caching, token authentication, and real-time monitoring with color-coded status displays.',
@@ -67,35 +62,32 @@ export const caseStudies: CaseStudy[] = [
       'Firebase Hosting',
       'shadcn/ui',
     ],
-    links: [
-      { label: 'Demo walkthrough', url: 'https://github.com/amnabbouti?tab=repositories' },
-    ],
     preview: {
       images: [
         {
-          src: '/src/assets/images/dashboard.png',
-          alt: 'StockMaster Dashboard - Command Center with real-time monitoring and integrated terminal',
+          src: '/images/dashboard.png',
+          alt: 'Admin Dashboard - Command Center with real-time monitoring and integrated terminal',
         },
         {
-          src: '/src/assets/images/dashboard_2.png',
-          alt: 'StockMaster Dashboard - API Gateway management and security monitoring',
+          src: '/images/dashboard_2.png',
+          alt: 'Admin Dashboard - API Gateway management and security monitoring',
         },
         {
-          src: '/src/assets/images/dashboard_3.png',
-          alt: 'StockMaster Dashboard - Inventory Matrix with stock management and tracking',
+          src: '/images/dashboard_3.png',
+          alt: 'Admin Dashboard - Inventory Matrix with stock management and tracking',
         },
         {
-          src: '/src/assets/images/dashboard_4.png',
-          alt: 'StockMaster Dashboard - User management and access control interface',
+          src: '/images/dashboard_4.png',
+          alt: 'Admin Dashboard - User management and access control interface',
         },
       ],
     },
   },
-    {
+  {
     slug: 'missions-control-mobile',
     title: 'Missions Control - Cross-Platform Mobile App',
     role: 'Mobile Developer',
-    timeframe: '2024',
+    timeframe: '2025',
     summary:
       'React Native Expo application for the Missions Control inventory system, providing cross-platform field operations with barcode scanning, real-time inventory tracking, and offline-first functionality. Mobile companion to the Laravel API backend.',
     context:
@@ -123,13 +115,50 @@ export const caseStudies: CaseStudy[] = [
       'Expo Barcode Scanner',
       'AsyncStorage',
     ],
+    preview: {
+      images: [
+        {
+          src: '/images/mobile.png',
+          alt: 'Missions Control Mobile App - Home Screen',
+        },
+        {
+          src: '/images/mobile2.png',
+          alt: 'Missions Control Mobile App - Inventory List',
+        },
+        {
+          src: '/images/mobile3.png',
+          alt: 'Missions Control Mobile App - Barcode Scanner',
+        },
+        {
+          src: '/images/mobile4.png',
+          alt: 'Missions Control Mobile App - Item Details',
+        },
+        {
+          src: '/images/mobile5.png',
+          alt: 'Missions Control Mobile App - Stock Management',
+        },
+        {
+          src: '/images/mobile6.png',
+          alt: 'Missions Control Mobile App - Settings',
+        },
+        {
+          src: '/images/mobile7.png',
+          alt: 'Missions Control Mobile App - Search Function',
+        },
+        {
+          src: '/images/mobile8.png',
+          alt: 'Missions Control Mobile App - User Profile',
+        },
+      ],
+    },
   },
   {
     slug: 'poke-markt-webshop',
     title: 'Poke Markt - E-Commerce Webshop',
     role: 'Frontend Developer',
     timeframe: '2025',
-    summary: 'Team project building a modern e-commerce webshop with React frontend and Node.js backend, developed in collaboration with 3 other students to demonstrate teamwork and full-stack development skills.',
+    summary:
+      'Team project building a modern e-commerce webshop with React frontend and Node.js backend, developed in collaboration with 3 other students to demonstrate teamwork and full-stack development skills.',
     context:
       'Academic group project to build a complete e-commerce solution from scratch. Working with a team of 4 students, we developed "Poke Markt" - a modern webshop demonstrating collaborative development practices, version control workflows, and full-stack JavaScript development.',
     challenge: [
@@ -156,19 +185,19 @@ export const caseStudies: CaseStudy[] = [
     preview: {
       images: [
         {
-          src: '/src/assets/images/pke_markt.png',
+          src: '/images/pke_markt.png',
           alt: 'Poke Markt - Homepage with product showcase and navigation',
         },
         {
-          src: '/src/assets/images/poke_markt2.png',
+          src: '/images/poke_markt2.png',
           alt: 'Poke Markt - Product catalog and filtering system',
         },
         {
-          src: '/src/assets/images/poke_markt3.png',
+          src: '/images/poke_markt3.png',
           alt: 'Poke Markt - Product detail page and cart functionality',
         },
         {
-          src: '/src/assets/images/poke_markt4.png',
+          src: '/images/poke_markt4.png',
           alt: 'Poke Markt - Shopping cart and checkout process',
         },
       ],
@@ -179,17 +208,18 @@ export const caseStudies: CaseStudy[] = [
     title: 'Planets Explorer - 3D Exoplanet Database',
     role: 'Lead Developer',
     timeframe: '2024',
-    summary: 'First academic project: Interactive exoplanet exploration website with 3D planet models, NASA API integration, and comprehensive user management system. Led a team of 3 students in building a full-stack web application.',
+    summary:
+      'First academic project: Interactive exoplanet exploration website with 3D planet models, NASA API integration, and comprehensive user management system. Led a team of 3 students in building a full-stack web application.',
     context:
       'Initial group project undertaken as lead developer with 2 other students. The goal was to create an engaging educational platform for exploring exoplanets and space science, demonstrating both technical skills and team leadership capabilities.',
     challenge: [
       'Lead and coordinate development across a 3-person team as the primary developer while learning collaborative coding practices.',
       'Implement interactive 3D planet visualization using modern web technologies to make space science accessible and engaging.',
-      'Build a complete full-stack application with user authentication, database management, and external API integration from scratch.',
+      'Build a complete full-stack application with user authentication, data persistence, and external API integration from scratch.',
     ],
     solution: [
-      'Developed a comprehensive planets database using PHP/MySQL with user authentication, admin panel, and interactive features like planet liking and filtering.',
-      'Implemented 3D planet models using Google\'s model-viewer web component with auto-rotation and camera controls for immersive exploration.',
+      'Developed a comprehensive planets catalog using PHP/MySQL with user authentication, admin panel, and interactive features like planet liking and filtering.',
+      "Implemented 3D planet models using Google's model-viewer web component with auto-rotation and camera controls for immersive exploration.",
       'Integrated NASA API for featured space content and built responsive frontend with Vite build system and custom CSS styling.',
       'Created user management system with registration, login, profiles, and admin controls for managing both users and planet data.',
     ],
@@ -212,19 +242,19 @@ export const caseStudies: CaseStudy[] = [
     preview: {
       images: [
         {
-          src: '/src/assets/images/millers_world.png',
+          src: '/images/millers_world.png',
           alt: 'Planets Explorer - Main dashboard with 3D planet models and catalog',
         },
         {
-          src: '/src/assets/images/millers_world2.png',
+          src: '/images/millers_world2.png',
           alt: 'Planets Explorer - Detailed planet view with interactive 3D model',
         },
         {
-          src: '/src/assets/images/millers_world3.png',
+          src: '/images/millers_world3.png',
           alt: 'Planets Explorer - Detailed planet view with interactive 3D model',
         },
         {
-          src: '/src/assets/images/millers_world4.png',
+          src: '/images/millers_world4.png',
           alt: 'Planets Explorer - Detailed planet view with interactive 3D model',
         },
       ],

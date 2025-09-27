@@ -11,6 +11,11 @@ export function ProjectPreview({ preview }: ProjectPreviewProps) {
 
   if (!preview?.images) return null;
 
+  // Helper function to detect if an image is a mobile screenshot
+  const isMobileImage = (imageSrc: string): boolean => {
+    return imageSrc.includes('mobile');
+  };
+
   const handleImageLoad = (index: number) => {
     setLoadedImages(prev => new Set([...prev, index]));
   };
@@ -97,7 +102,10 @@ export function ProjectPreview({ preview }: ProjectPreviewProps) {
         {/* Multiple Images Container */}
         <div className="space-y-3">
           {preview.images.map((image, index) => (
-            <div key={index} className="relative border border-green-500/20 bg-black/40 overflow-hidden">
+            <div
+              key={index}
+              className="relative border border-green-500/20 bg-black/40 overflow-hidden"
+            >
               <img
                 src={image.src}
                 alt={image.alt}
@@ -107,7 +115,8 @@ export function ProjectPreview({ preview }: ProjectPreviewProps) {
                 onLoad={() => handleImageLoad(index)}
                 onClick={() => openFullscreen(index)}
                 style={{
-                  filter: 'brightness(0.95) contrast(1.1) saturate(1.05) drop-shadow(0 0 10px rgba(34, 197, 94, 0.3))',
+                  filter:
+                    'brightness(0.95) contrast(1.1) saturate(1.05) drop-shadow(0 0 10px rgba(34, 197, 94, 0.3))',
                   display: 'block',
                   verticalAlign: 'top',
                   margin: 0,
@@ -147,7 +156,7 @@ export function ProjectPreview({ preview }: ProjectPreviewProps) {
               {fullscreenImage + 1} / {preview?.images?.length || 0}
             </div>
             <button
-              onClick={(e) => {
+              onClick={e => {
                 e.stopPropagation();
                 closeFullscreen();
               }}
@@ -159,11 +168,11 @@ export function ProjectPreview({ preview }: ProjectPreviewProps) {
 
           {/* Main content area - centered vertically */}
           <div className="flex-1 flex items-center justify-center">
-            <div className="flex items-center gap-6 max-w-full" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-6 max-w-full" onClick={e => e.stopPropagation()}>
               {/* Left navigation arrow */}
               {preview.images.length > 1 && (
                 <button
-                  onClick={(e) => {
+                  onClick={e => {
                     e.stopPropagation();
                     goToPrevImage();
                   }}
@@ -176,14 +185,27 @@ export function ProjectPreview({ preview }: ProjectPreviewProps) {
 
               {/* Image container */}
               <div className="relative max-w-6xl max-h-[calc(100vh-200px)] flex items-center justify-center">
-                <img
-                  src={preview.images[fullscreenImage].src}
-                  alt={preview.images[fullscreenImage].alt}
-                  className="max-w-full max-h-full object-contain"
-                  style={{
-                    filter: 'brightness(1) contrast(1.1) saturate(1.05)',
-                  }}
-                />
+                {isMobileImage(preview.images[fullscreenImage].src) ? (
+                  <div className="max-w-xs max-h-[60vh] flex items-center justify-center">
+                    <img
+                      src={preview.images[fullscreenImage].src}
+                      alt={preview.images[fullscreenImage].alt}
+                      className="max-w-full max-h-full object-contain"
+                      style={{
+                        filter: 'brightness(1) contrast(1.1) saturate(1.05)',
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={preview.images[fullscreenImage].src}
+                    alt={preview.images[fullscreenImage].alt}
+                    className="max-w-full max-h-full object-contain"
+                    style={{
+                      filter: 'brightness(1) contrast(1.1) saturate(1.05)',
+                    }}
+                  />
+                )}
 
                 {/* Caption in fullscreen */}
                 {preview.images[fullscreenImage].caption && (
@@ -198,7 +220,7 @@ export function ProjectPreview({ preview }: ProjectPreviewProps) {
               {/* Right navigation arrow */}
               {preview.images.length > 1 && (
                 <button
-                  onClick={(e) => {
+                  onClick={e => {
                     e.stopPropagation();
                     goToNextImage();
                   }}

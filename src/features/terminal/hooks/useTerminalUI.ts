@@ -51,6 +51,7 @@ export function useTerminalUI(): MenuState &
       line.includes('Email:') ||
       line.includes('LinkedIn:') ||
       line.includes('GitHub:') ||
+      line.includes('X:') ||
       line.includes('Location:') ||
       line.includes('Status:')
     ) {

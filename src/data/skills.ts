@@ -6,13 +6,14 @@ export const skillCategories: SkillCategory[] = [
     label: 'Frontend Systems & Architecture',
     tagline: 'User interfaces with modern React and TypeScript',
     narrative:
-      'I enjoy building frontend applications using React, Next.js, and React Native. I focus on creating clean, maintainable code and good user experiences.',
+      'I build frontend applications using React, Next.js, and React Native, focusing on clean, maintainable code and user-centered design.',
     stack: [
       {
         name: 'React 19 / TypeScript',
         level: 'Intermediate',
         focus: 'Primary',
-        summary: 'Interactive dashboards, terminal interfaces, e-commerce platforms. Built 4 applications using modern React patterns.',
+        summary:
+          'Interactive dashboards, terminal interfaces, e-commerce platforms. Built 4 applications using modern React patterns.',
         lastUsed: 'Current',
         highlights: [
           'Real-time admin dashboards with complex state management',
@@ -25,7 +26,8 @@ export const skillCategories: SkillCategory[] = [
         name: 'Next.js 15',
         level: 'Intermediate',
         focus: 'Primary',
-        summary: 'Full-stack applications with server components. Built StockMaster dashboard for the Missions Control project.',
+        summary:
+          'Full-stack applications with server components. Built Admin Dashboard for the Missions Control project.',
         lastUsed: 'Current',
         highlights: [
           'Complex admin dashboard with 6 integrated modules',
@@ -38,7 +40,8 @@ export const skillCategories: SkillCategory[] = [
         name: 'React Native / Expo',
         level: 'Intermediate',
         focus: 'Primary',
-        summary: 'Cross-platform mobile development. Built inventory management app with native device integrations.',
+        summary:
+          'Cross-platform mobile development. Built inventory management app with native device integrations.',
         lastUsed: '2025',
         highlights: [
           'Native camera and barcode scanner integration',
@@ -51,7 +54,8 @@ export const skillCategories: SkillCategory[] = [
         name: 'Modern Frontend Tooling',
         level: 'Intermediate',
         focus: 'Supporting',
-        summary: 'Vite, Tailwind CSS, TypeScript, component libraries. Focused on good developer experience.',
+        summary:
+          'Vite, Tailwind CSS, TypeScript, component libraries. Focused on good developer experience.',
         lastUsed: 'Current',
         highlights: [
           'Efficient development workflow with Vite build system',
@@ -84,13 +88,14 @@ export const skillCategories: SkillCategory[] = [
     label: 'Backend & API Integration',
     tagline: 'Backend development',
     narrative:
-      'I work with backend technologies like Laravel and databases to create APIs that support frontend applications. Still learning and improving my backend skills.',
+      'I build robust backend systems with Laravel, designing scalable APIs and data architectures. Currently expanding my backend expertise through hands-on project development.',
     stack: [
       {
         name: 'Laravel 11 / PHP',
         level: 'Intermediate',
         focus: 'Primary',
-        summary: 'REST API development for inventory management. Built comprehensive API system with 120+ endpoints.',
+        summary:
+          'REST API development for inventory management. Built comprehensive API system with 120+ endpoints.',
         lastUsed: '2024',
         highlights: [
           'Multi-tenant architecture with role-based access control',
@@ -103,7 +108,8 @@ export const skillCategories: SkillCategory[] = [
         name: 'Database Architecture',
         level: 'Intermediate',
         focus: 'Primary',
-        summary: 'MySQL and PostgreSQL database design. Built user management systems and inventory tracking databases.',
+        summary:
+          'Relational database design with MySQL and PostgreSQL. Architected multi-table systems for user management and inventory tracking.',
         lastUsed: 'Current',
         highlights: [
           'Relational database design and normalization',
@@ -115,14 +121,16 @@ export const skillCategories: SkillCategory[] = [
         name: 'Node.js / Express',
         level: 'Intermediate',
         focus: 'Supporting',
-        summary: 'Full-stack JavaScript development for e-commerce platforms. Team collaboration on REST API development.',
+        summary:
+          'Full-stack JavaScript development for e-commerce platforms. Team collaboration on REST API development.',
         lastUsed: '2025',
       },
       {
         name: 'API Integration',
         level: 'Intermediate',
         focus: 'Supporting',
-        summary: 'Third-party API consumption and integration. NASA API, payment systems, external service connections.',
+        summary:
+          'Third-party API consumption and integration. NASA API, payment systems, external service connections.',
         lastUsed: 'Current',
         highlights: [
           'RESTful API consumption with error handling',
@@ -144,7 +152,7 @@ export const skillCategories: SkillCategory[] = [
     ],
     proofPoints: [
       'Built multi-tenant API with 120+ endpoints using Laravel',
-      'Created database systems for user authentication and inventory management',
+      'Built multi-tenant user authentication and inventory management systems',
       'Integrated external APIs like NASA data services for project features',
       'Worked on full-stack applications connecting frontend and backend',
       'Followed RESTful API standards in team development projects',
@@ -155,13 +163,14 @@ export const skillCategories: SkillCategory[] = [
     label: 'Development & Tools',
     tagline: 'Development tools and deployment workflows',
     narrative:
-      'I use modern development tools and practices like Git, deployment platforms, and databases to support my projects and team collaboration.',
+      'I leverage modern development workflows including Git collaboration and automated deployment to deliver production-ready applications.',
     stack: [
       {
         name: 'Git & Version Control',
         level: 'Intermediate',
         focus: 'Primary',
-        summary: 'Team collaboration workflows, branching strategies, code reviews, and repository management.',
+        summary:
+          'Team collaboration workflows, branching strategies, code reviews, and repository management.',
         lastUsed: 'Current',
         highlights: [
           'Collaborative development with multiple team members',
@@ -180,7 +189,8 @@ export const skillCategories: SkillCategory[] = [
         name: 'Database Management',
         level: 'Intermediate',
         focus: 'Supporting',
-        summary: 'MySQL and PostgreSQL database design, user management, and data modeling.',
+        summary:
+          'Relational database architecture, schema design, and data modeling with MySQL and PostgreSQL.',
         lastUsed: 'Current',
       },
     ],
@@ -188,7 +198,7 @@ export const skillCategories: SkillCategory[] = [
     proofPoints: [
       'Managed collaborative development across multiple team-based academic projects',
       'Deployed projects to Firebase hosting and Vercel for live demonstrations',
-      'Implemented database systems for user management and inventory tracking',
+      'Architected user management and inventory tracking systems',
     ],
   },
   {
@@ -196,13 +206,14 @@ export const skillCategories: SkillCategory[] = [
     label: 'Technical Leadership & Delivery',
     tagline: 'Team collaboration and project coordination',
     narrative:
-      'I enjoy working in teams and have experience coordinating academic projects. I like helping teammates and learning from others in collaborative environments.',
+      'I collaborate effectively in team environments and coordinate academic projects. I contribute to shared goals while learning from team members in collaborative settings.',
     stack: [
       {
         name: 'Project Leadership',
         level: 'Intermediate',
         focus: 'Primary',
-        summary: 'Coordinated development teams on academic projects. Experience working with teammates to deliver complete applications.',
+        summary:
+          'Coordinated development teams on academic projects. Experience working with teammates to deliver complete applications.',
         lastUsed: 'Current',
         highlights: [
           'Successfully led 3-person team on full-stack educational platform',
@@ -215,14 +226,16 @@ export const skillCategories: SkillCategory[] = [
         name: 'Mentoring & Collaboration',
         level: 'Advanced',
         focus: 'Primary',
-        summary: 'Code reviews and knowledge sharing with teammates. Helped establish Git workflows for team projects.',
+        summary:
+          'Code reviews and knowledge sharing with teammates. Helped establish Git workflows for team projects.',
         lastUsed: 'Current',
       },
       {
         name: 'Product Delivery',
         level: 'Advanced',
         focus: 'Supporting',
-        summary: 'Full project lifecycle experience from planning to deployment. Learning agile development practices.',
+        summary:
+          'Full project lifecycle experience from planning to deployment. Learning agile development practices.',
         lastUsed: 'Current',
       },
     ],

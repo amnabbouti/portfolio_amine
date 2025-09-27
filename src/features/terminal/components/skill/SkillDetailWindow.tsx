@@ -8,8 +8,14 @@ interface SkillDetailWindowProps {
 
 export function SkillDetailWindow({ category, onClose }: SkillDetailWindowProps) {
   return (
-    <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/85 px-4 py-10 font-mono text-sm text-gray-100 backdrop-blur-sm">
-      <div className="relative w-full max-w-4xl max-h-full overflow-hidden border border-green-500/50 bg-gray-950 shadow-lg shadow-green-500/10">
+    <div
+      className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/85 px-4 py-10 font-mono text-sm text-gray-100 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-6xl max-h-full overflow-hidden border border-green-500/50 bg-gray-950 shadow-lg shadow-green-500/10"
+        onClick={e => e.stopPropagation()}
+      >
         <div className="flex items-center justify-between border-b border-green-500/40 bg-gray-900 px-4 py-3">
           <div>
             <div className="text-xs uppercase tracking-[0.35em] text-green-400/80">

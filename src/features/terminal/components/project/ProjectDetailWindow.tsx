@@ -11,8 +11,14 @@ const accentClass = (accent: boolean) => (accent ? 'text-green-400' : 'text-gree
 
 export function ProjectDetailWindow({ study, onClose }: ProjectDetailWindowProps) {
   return (
-    <div className="fixed inset-0 z-[10000] bg-black/85 backdrop-blur-sm flex items-center justify-center px-4 py-10">
-      <div className="relative w-full max-w-4xl max-h-full overflow-hidden border border-green-500/50 bg-gray-950 text-gray-100 shadow-lg shadow-green-500/10">
+    <div
+      className="fixed inset-0 z-[10000] bg-black/85 backdrop-blur-sm flex items-center justify-center px-4 py-10"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-6xl max-h-full overflow-hidden border border-green-500/50 bg-gray-950 text-gray-100 shadow-lg shadow-green-500/10"
+        onClick={e => e.stopPropagation()}
+      >
         <div className="flex items-center justify-between border-b border-green-500/40 bg-gray-900 px-4 py-3">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-green-400/80">

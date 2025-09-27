@@ -6,7 +6,7 @@ export function InfoBar() {
         <span className="text-green-400">AVAILABLE FOR WORK</span>
       </div>
       <div>
-        <span className="text-cyan-400">LOCATION:</span> <span className="text-white">EARTH</span>
+        <span className="text-cyan-400">LOCATION:</span> <span className="text-white">ANTWERP</span>
       </div>
       <div>
         <span className="text-cyan-400">TIMEZONE:</span> <span className="text-white">UTC+1</span>
@@ -36,12 +36,12 @@ export function InfoBar() {
       <div>
         <span className="text-cyan-400">X&nbsp;:</span>{' '}
         <a
-          href="https://x.com/amine_abbouti"
+          href="https://x.com/Amine__abbouti"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-400 hover:text-blue-300 underline"
         >
-          @amine_abbouti
+          @amine__abbouti
         </a>
       </div>
     </div>

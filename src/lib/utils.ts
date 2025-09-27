@@ -15,7 +15,7 @@ export function cn(...inputs: ClassValue[]) {
  */
 export function downloadFile(filename: string) {
   const link = document.createElement('a');
-  link.href = `/src/assets/${filename}`;
+  link.href = `/${filename}`;
   link.download = filename;
   document.body.appendChild(link);
   link.click();

@@ -27,7 +27,9 @@ export function SkillListOutput({ items, onSelect }: SkillListOutputProps) {
             <span>{item.label}</span>
             <span className="text-cyan-400 group-hover:text-green-400">OPEN &gt;</span>
           </div>
-          <div className="mt-3 text-lg font-semibold text-green-300 group-hover:text-green-200">{item.teaser}</div>
+          <div className="mt-3 text-lg font-semibold text-green-300 group-hover:text-green-200">
+            {item.teaser}
+          </div>
           <div className="mt-3 text-xs text-gray-400">stack &gt;</div>
           <ul className="mt-1 space-y-1 text-xs text-gray-300">
             {item.primaryTools.map(tool => (

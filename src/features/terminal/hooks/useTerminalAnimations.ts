@@ -135,7 +135,7 @@ export function useTerminalAnimations(
 
     // Download the file
     import('@/lib').then(({ downloadFile }) => {
-      downloadFile('CV-AMINE-ABBOUTI.pdf');
+      downloadFile('AMINE-ABBOUTI.pdf');
     });
 
     setCommandHistory(prev => {
@@ -148,7 +148,7 @@ export function useTerminalAnimations(
             'Downloading resume...',
             'Resume downloaded successfully!',
             '',
-            'File saved: CV-AMINE-ABBOUTI.pdf',
+            'File saved: AMINE-ABBOUTI.pdf',
             '',
           ],
           isError: false,

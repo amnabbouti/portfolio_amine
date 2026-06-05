@@ -65,7 +65,7 @@ export function TerminalOutput({
             <DownloadConfirmation
               onConfirm={onDownloadConfirm}
               onCancel={onDownloadCancel}
-              filename="CV-AMINE-ABBOUTI.pdf"
+              filename="AMINE-ABBOUTI.pdf"
             />
           )}
           {index === commandHistory.length - 1 && isDownloading && !showDownloadConfirmation && (
